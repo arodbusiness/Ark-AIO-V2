@@ -77,7 +77,7 @@
 77					Light Autumn					ae7000
 78					Mustard					949428
 79					Actual Black					000000
-80					Midnight Blue					190a36
+80					Midnight Blue					191d36
 81					Dark Blue					152b39
 82					Black Sands					302531
 83					Lemon Lime					a8ff43
