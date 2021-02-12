@@ -1,0 +1,1403 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Cache-control" content="no-cache">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta charset="utf-8">
+<style>
+
+html {
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+body{
+  scrollbar-base-color: #ffffff;
+  scrollbar-face-color: #888888;
+  scrollbar-track-color: #151515;
+  scrollbar-Arrow-color: #666666;
+  scrollbar-shadow-color: #ffffff;
+  background-color: #000000;
+  overflow: hidden;
+  margin: 0px 0px;
+  width:100% !important;
+}
+
+.dropdownline {
+  background-image: -ms-linear-gradient(top, #111111, #333333);
+  border: none;
+  border-collapse: collapse;
+  font-size: 16px;
+  padding: 6px;
+}
+
+.dropdownbutton {
+  background-color: transparent;
+  color: white;
+  cursor: pointer;
+  border: none;
+  text-align: left;
+  font-size: 16px;
+}
+
+tr.content {
+  display: none;
+  overflow: hidden;
+  background-color: #333333;
+}
+
+tr.content td {
+  width: 48%;
+}
+
+table, td, tr {
+  padding: 4px;
+  margin: 0px 0px;
+  border: none;
+  border-collapse: collapse;
+  color: white;
+}
+
+.tablecontent {
+  width: 95%;
+}
+
+
+input, select {
+  background-color: #111111;
+  color: white;
+}
+
+
+input[type=text], input[type=number]  {
+  width: 100%;
+}
+
+input[type=text]:disabled, input[type=number]:disabled, input[type=button]:disabled  {
+  color: #888888;
+}
+
+
+input[type=range] {
+  outline: none;
+  height: 22px;
+  background: transparent;
+  border: 0;
+  padding: 0 0;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+input[type=range]:hover {
+  opacity: 1;
+}
+
+
+input[type=range]::-ms-thumb {
+  background: #FFFFFF;
+  border: 1px solid #000000;
+  width: 8px;
+  height: 20px;
+  cursor: pointer;
+
+}
+
+
+input[type=range]::-ms-track {
+  color: transparent;
+  border: 1px solid #000000;
+  width: 100%;
+  height: 6px;
+  cursor: pointer;
+
+}
+
+
+
+input[type=range]::-ms-fill-upper {
+  background: #121212;
+}
+
+input[type=range]::-ms-fill-lower {
+  background: #666666;
+}
+
+
+
+#XhairR::-ms-thumb, #ASBinvertR::-ms-thumb, #ASBalphaR::-ms-thumb {
+  background: #FF0000;
+}
+
+#XhairG::-ms-thumb, #ASBinvertG::-ms-thumb, #ASBalphaG::-ms-thumb {
+  background: #00FF00;
+}
+
+#XhairB::-ms-thumb, #ASBinvertB::-ms-thumb, #ASBalphaB::-ms-thumb {
+  background: #0000FF;
+}
+
+
+
+#XhairR::-ms-fill-lower, #ASBinvertR::-ms-fill-lower, #ASBalphaR::-ms-fill-lower {
+  background: #993333;
+}
+
+#XhairG::-ms-fill-lower, #ASBinvertG::-ms-fill-lower, #ASBalphaG::-ms-fill-lower {
+  background: #339933;
+}
+
+#XhairB::-ms-fill-lower, #ASBinvertB::-ms-fill-lower, #ASBalphaB::-ms-fill-lower {
+  background: #333399;
+}
+
+
+input.ExportBtn{
+  display: inline-block;
+  width: 75px;
+  white-space: normal;
+  word-wrap: break-word;
+  cursor: pointer;
+}
+
+table#MainTable{
+  position:absolute;
+  top:300px;
+  overflow-x: hidden; 
+  width: 100% !important;
+  margin: 0px 0px;
+}
+
+
+img#SplashImageTop, img#SplashImageBottom {
+  position:absolute;
+}
+img#SplashImageTop{
+  opacity: 100%;
+}
+
+img#SplashImageBottom {
+  opacity: 0;
+}
+
+div#Splashdiv {
+  display:none;
+  position:absolute;
+}
+
+</style>
+</head>
+
+<body>
+
+
+<div id="Splashdiv">
+  <a href="myapp://UpdateSplashImage">
+    <img id="SplashImageBottom" src="icon.png" />
+    <img id="SplashImageTop" src="icon.png" />
+  </a>
+</div>
+
+
+
+
+<table id="MainTable">
+
+<tr id="ValidationInfo" >
+
+</tr>
+
+
+
+
+<tr class="dropdownline" id="AlertsDropDown" >
+  <td>
+    <input type="checkbox" onchange="check(this)" id="AlertsCheck" >
+    <button type="button" onclick="buttonpress(this)" class="dropdownbutton" id="Alerts"> <img id="AlertsArrow" src="Captures\Arrow0.png"> Alerts</button>
+  </td>
+</tr>
+
+<tr id="AlertsContent" class="content">
+  <td colspan="10"> 
+    <table class="tablecontent">
+      <tr>
+        <td>Repeat Delay(s):</td>
+        <td><input type="number" id="AlertsDelay" ></td>
+      </tr>
+      <tr>
+        <td nowrap>
+          <input type="checkbox" id="AlertsInput1" > Enemy Spotted
+        </td>
+        <td nowrap>
+          <input type="checkbox" id="AlertsInput4" > Server Crash
+        </td>
+      </tr>
+      <tr>
+        <td nowrap>
+          <input type="checkbox" id="AlertsInput2" > Lost Connection
+        </td>
+        <td nowrap>
+          <input type="checkbox" id="AlertsInput5" > Server Recover
+        </td>
+      </tr>
+      <tr>
+        <td nowrap>
+          <input type="checkbox" id="AlertsInput3" > Game Crashed
+        </td>
+        <td nowrap>
+          <input type="checkbox" id="AlertsInput6" > Death Message
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <input type="checkbox" id="KeepActive" > Keep Game Active if AFK
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" align="right">
+          <input type="button" value="Update Alerts" onclick="goto(this)" id="UpdateAlerts">
+        </td>
+      </tr>
+<!--LastAlert--> 
+<!--
+      <tr>
+        <td colspan="2" style="border-top:solid 2px"></td>
+      </tr>
+
+      <tr>
+        <td colspan="2" style="border-top:solid 2px"></td>
+      </tr>
+
+
+      <tr>
+        <td>Alert Title:</td>
+        <td><input type="text" id="AlertTitle1" value="Imprints"></td>
+      </tr>
+
+      <tr>
+        <td>Time Remaining:</td>
+        <td>
+          <input type="text" value="8 hours 30 min" id="TimeRemaining1" >
+        </td>
+      </tr>
+
+      <tr>
+        <td align="center" colspan="2">
+          <input type="button" onclick="buttonpress(this)" value="Stop Timer" >
+
+          <input type="button" onclick="buttonpress(this)" value="Update Timer" >
+        </td>
+      </tr>
+      
+
+
+      <tr>
+        <td colspan="2" style="border-top:solid 2px"></td>
+      </tr>
+
+      
+
+      <tr>
+        <td align="right" colspan="2">
+          <input type="button" onclick="buttonpress(this)" value="Add Alert Slot" >
+        </td>
+      </tr>
+
+--> 
+
+
+
+
+
+
+
+
+
+      <tr>
+        <td colspan="2" style="border-top:solid 2px"></td>
+      </tr>
+
+      <tr>
+        <td colspan="2" style="border-top:solid 2px"></td>
+      </tr>
+
+
+   
+      <tr>
+        <td colspan="2" align="center">
+          <input type="checkbox" id="CDCheck" onclick="goto(this)" >
+          Countdown Timer
+        </td>
+      </tr>
+
+      <tr>
+        <td colspan="2">
+          <input type="checkbox" id="CDScreenDisp" >
+          Display on Screen
+        </td>
+      </tr>
+      <tr>
+        <td>Position X:</td>
+        <td><input type="number" id="CDX" ></td>
+      </tr>
+      <tr>
+        <td>Position Y:</td>
+        <td><input type="number" id="CDY" ></td>
+      </tr>
+      <tr>
+        <td>Text Size:</td>
+        <td><input type="number" id="CDSize" ></td>
+      </tr>
+
+
+
+      <tr>
+        <td align="left" colspan="2">
+          <table>
+            <tr>
+              <td>
+                <input type="radio" id="CDToggle0" name="CDToggle" value="0" onclick="goto(this)" > Notify
+              </td>
+
+              <td>
+                <input type="radio" id="CDToggle2" name="CDToggle" value="2" onclick="goto(this)" > Food Countdown
+              </td>
+
+              <td nowrap>
+                <input type="radio" id="CDToggle1" name="CDToggle" value="1" onclick="goto(this)" > Close Ark
+              </td>
+
+            </tr>
+          </table>
+        </td>
+      </tr>
+
+
+
+
+
+      <tr class="alertnotify" id="alertnotify1">
+        <td>Time:</td><td><input type="text" id="CDTimeDisp" ></td>
+      </tr>
+<!-- --------------------------------------------------------------------------------------------------------- -->
+
+      <tr class="alertnotify" id="alertnotify2">
+        <td>Notify Text:</td><td><input type="text" id="CDNotify" ></td>
+      </tr>
+
+      <tr class="alertnotify" id="alertnotify3">
+        <td>Reset Timer Key:</td><td><input type="text" id="CDResetKey" ></td>
+      </tr>
+      <tr class="alertnotify" id="alertnotify4">
+        <td>Key Presses Reset:</td><td><input type="text" id="CDResetNumber" ></td>
+      </tr>
+
+<!-- --------------------------------------------------------------------------------------------------------- -->
+
+
+      <tr class="alertnotify" id="alertnotify5">
+        <td>Food Text:</td><td><input type="text" id="CDFoodNotify" ></td>
+      </tr>
+
+
+      <tr class="alertnotify" id="alertnotify6">
+        <td>Current Food:</td><td><input type="number" id="CDFood" ></td>
+      </tr>
+
+      <tr class="alertnotify" id="alertnotify7">
+        <td>Food Rate (f/s):</td><td><input type="number" id="CDFoodRate" ></td>
+      </tr>
+
+      <tr class="alertnotify" id="alertnotify8">
+        <td>Remaining Food:</td><td><input type="number" id="CDFoodRem" disabled ></td>
+      </tr>
+
+      <tr class="alertnotify" id="alertnotify9">
+        <td>Remaining Time:</td><td><input type="number" id="CDRemTime" disabled ></td>
+      </tr>
+
+<!-- --------------------------------------------------------------------------------------------------------- -->
+
+      <tr>
+        <td colspan="2" align="right">
+          <input type="button" onclick="goto(this)" id="UpdateCountdown" value="Update Countdown" >
+        </td>
+      </tr>
+
+
+
+
+      <tr>
+        <td colspan="2" style="border-top:solid 2px"></td>
+      </tr>
+
+      <tr>
+        <td colspan="2" style="border-top:solid 2px"></td>
+      </tr>
+
+
+
+
+      <tr>
+        <td colspan="2">
+          <input type="checkbox" id="AlertAltSound" > Use Alert Sound Device
+        </td>
+      </tr>
+
+      <tr>
+        <td>Default Sound Device:</td>
+        <td id="DefaultSoundDevicesList"></td>
+      </tr>
+
+      <tr>
+        <td>Alert Sound Device:</td>
+        <td id="OutputSoundDevicesList"></td>
+      </tr>
+
+      <tr>
+        <td>
+          <input type="button" value="Test Output" onclick="goto(this)" id="TestSound" >
+        </td>
+        <td align="right">
+          <input type="button" onclick="goto(this)" id="UpdateSoundDevices" value="Update Output" >
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>
+
+
+
+
+<tr class="dropdownline" id="AutoClickDropDown" >
+  <td>
+    <input type="checkbox" onchange="check(this)" id="AutoClickCheck" >
+    <button type="button" onclick="buttonpress(this)" class="dropdownbutton" id="AutoClick"> <img id="AutoClickArrow" src="Captures\Arrow0.png"> Auto Click</button>
+  </td>
+</tr>
+
+<tr id="AutoClickContent" class="content">
+  <td colspan="10"> 
+    	<table class="tablecontent">
+        <tr>
+          <td>Function Hotkey:</td>
+          <td><input type="text" id="AutoClickHotkey"  ></td>
+        </tr>
+
+        <tr>
+          <td>Auto Click Preset:</td>
+          <td>
+          <select id="AutoClickPresetNumber" onchange="window.location.href='myapp://AutoClickPreset/'+this.value;" style="width:104%;">
+            <!--Start AutoClickPreset-->
+            <option value='1'>One</option>
+            <option value='2'>Two</option>
+            <option value='3'>Three</option>
+            <!--End AutoClickPreset-->
+          </select>
+        </td>
+        </tr>
+        <tr>
+          <td>Preset Name:</td>
+          <td><input type="text" id="AutoClickPresetStr" ></td>
+        </tr>
+        <tr>
+          <td align="center">
+            <input type="radio" id="AutoClickToggle1" name="AutoClickToggle" value="1" > Toggle
+          </td>
+          <td align="center">
+            <input type="radio" id="AutoClickToggle0" name="AutoClickToggle" value="0" > Hold
+          </td>
+        </tr>
+        <tr>
+          <td>Spam Key:</td>
+          <td><input type="text" id="AutoClickKey" ></td>
+        </tr>
+        <tr>
+          <td>Spam Delay(ms):</td>
+          <td><input type="number" id="AutoClickSpamDelay" ></td>
+        </tr>
+        <tr>
+          <td>Hold Delay(ms):</td>
+          <td><input type="number" id="AutoClickHoldDelay" ></td>
+        </tr>
+
+        <tr>
+          <td colspan="2">
+            <input type="checkbox" id="AutoClickOverlayCheck" > Show Overlay Bar
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <input type="button" onclick="window.location.href='myapp://AutoClickPreset/'+this.id;" value="Remove Preset" id="AutoClickRemovePreset">
+          </td>
+          <td colspan="2" align="center">
+            <input type="button" onclick="goto(this)" id="UpdateAutoClick" value="Update" >
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+
+
+
+
+
+
+<tr class="dropdownline" id="AutoFoodWaterDropDown" >
+  <td>
+    <input type="checkbox" onchange="check(this)" id="AutoFoodWaterCheck" >
+    <button type="button" onclick="buttonpress(this)" class="dropdownbutton" id="AutoFoodWater"> <img id="AutoFoodWaterArrow" src="Captures\Arrow0.png"> Auto Food Water</button>
+  </td>
+</tr>
+
+
+<tr id="AutoFoodWaterContent" class="content">
+  <td colspan="10">
+    <table class="tablecontent">
+      <tr>
+        <td nowrap>Food Key: 
+          <select id="FoodKey">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="0">0</option>
+          </select>
+        </td>
+        <td nowrap>Water Key: 
+          <select id="WaterKey">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="0">0</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>Food Time:</td>
+        <td>
+          <input type="number" id="FoodDelay" >
+        </td>
+      </tr>
+      <tr>
+        <td>Water Time:</td>
+        <td>
+          <input type="number" id="WaterDelay" >
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          Food Time Remaining:
+        </td>
+        <td>
+          <input type="text" value="countdown" id="FoodTimer" disabled>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          Water Time Remaining:
+        </td>
+        <td>
+          <input type="text" value="countdown" id="WaterTimer" disabled>
+        </td>
+      </tr>
+
+      <tr>
+        <td colspan="2">
+          <input type="checkbox" id="FoodWaterOverlayCheck" > Show Overlay Bars
+        </td>
+      </tr>
+
+      <tr>
+        <td align="center">
+          <input type="button" onclick="goto(this)" id="ResetTimersFW" value="Reset Timers" >
+
+          <!--
+          <input type="button" onclick="goto(this)" id="DefaultTimersFW" value="Default Timers" >
+          -->
+        </td>
+        <td align="center">
+          <input type="button" onclick="goto(this)" id="UpdateAutoFoodWater" value="Update">
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>
+
+
+
+
+
+
+<tr class="dropdownline" id="ConsoleVariablesDropDown" >
+  <td>
+    <input type="checkbox" onchange="check(this)" id="ConsoleVariablesCheck" >
+    <button type="button" onclick="buttonpress(this)" class="dropdownbutton" id="ConsoleVariables"> <img id="ConsoleVariablesArrow" src="Captures\Arrow0.png"> Console Variables</button>
+  </td>
+</tr>
+
+<tr id="ConsoleVariablesContent" class="content">
+  <td>
+    <table class="tablecontent">
+
+
+      <tr>
+        <td colspan="2">
+          <input type="checkbox" id="ConsoleVariables1" > Foliage
+        </td>
+      </tr>
+
+      <tr>
+        <td colspan="2">
+          <input type="checkbox" id="ConsoleVariables2" > Light Complexity
+        </td>
+      </tr>
+
+      <tr>
+        <td colspan="2">
+          <input type="checkbox" id="ConsoleVariables3" > Clear Water (ShowFlag.Materials=0)
+        </td>
+      </tr>
+
+
+
+      <tr>
+        <td colspan="2" align="center">
+          <input type="button" value="Update Console Variables" onclick="goto(this)" id="UpdateConsoleVariables">
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>
+
+
+<tr class="dropdownline" id="CrosshairDropDown" >
+  <td>
+    <input type="checkbox" onchange="check(this)" id="CrosshairCheck" >
+    <button type="button" onclick="buttonpress(this)" class="dropdownbutton" id="Crosshair"> <img id="CrosshairArrow" src="Captures\Arrow0.png"> Crosshair</button>
+  </td>
+</tr>
+
+<tr id="CrosshairContent" class="content">
+  <td>
+    <table class="tablecontent">
+    <tr>
+      <td>Diameter:<br>(Pixels)</td>
+      <td>
+        <input type="range" class="range" min="0" max="100" id="XhairD" >
+      </td>
+    </tr>
+    <tr>
+      <td>Alpha:</td>
+      <td>
+        <input type="range" class="range" min="0" max="255" id="XhairA" >
+      </td>
+    </tr>
+    <tr>
+      <td>Red:</td>
+      <td>
+        <input type="range" class="range" min="0" max="255" id="XhairR" >
+      </td>
+    </tr>
+    <tr>
+      <td>Green:</td>
+      <td>
+        <input type="range" class="range" min="0" max="255" id="XhairG" >
+      </td>
+    </tr>
+    <tr>
+      <td>Blue:</td>
+      <td>
+        <input type="range" class="range" min="0" max="255" id="XhairB" >
+      </td>
+    </tr>
+    <tr>
+      <td>Offset X:</td>
+      <td><input type="number" id="XhairOffsetX" ></td>
+    </tr>
+    <tr>
+      <td>Offset Y:</td>
+      <td><input type="number" id="XhairOffsetY" ></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="right">
+        <input type="button" value="Update" onclick="goto(this)" id="UpdateCrosshair">
+      </td>
+    </tr>
+  </table>
+  </td>
+</tr>
+
+
+
+<tr class="dropdownline" id="DinoExportDropDown" >
+  <td>
+    <input type="checkbox" onchange="check(this)" id="DinoExportCheck" >
+    <button type="button" onclick="buttonpress(this)" class="dropdownbutton" id="DinoExport"> <img id="DinoExportArrow" src="Captures\Arrow0.png"> Dino Export</button>
+  </td>
+</tr>
+
+<tr id="DinoExportContent" class="content">
+  <td colspan="10"> 
+
+    <table class="tablecontent">
+
+      <tr>
+        <td colspan="2">
+          <input type="checkbox" id="NameYourCheck" onchange="check(this)"> Close Naming Window on Claim
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" style="border-top:solid 2px"></td>
+      </tr>
+    </table>
+
+      <table class="tablecontent" id="DinoExportTable">
+      </table>
+  
+      <table class="tablecontent">
+        <tr>
+          <td colspan="2" align="center" nowrap>
+            <input type="button" onclick="goto(this)" id="TotalExports" value="Clean Exports" class="ExportBtn">
+          
+            <input type="button" onclick="goto(this)" id="ASBsettings" value="Hide Settings" class="ExportBtn">
+          
+            <input type="button" onclick="goto(this)" id="LastExport" value="Last Export" class="ExportBtn">
+          </td>
+        </tr>
+
+
+        <tr class="ASBsettings">
+          <td colspan="2" style="border-top:solid 2px"></td>
+        </tr>
+
+
+        <tr class="ASBsettings">
+          <td colspan="2">
+            <table>
+              <tr>
+                <td style="width:33%; text-align:center" nowrap>
+                  <input type="checkbox" id="ExportRaising" > Raising
+                </td>
+                <td style="width:33%; text-align:center" nowrap>
+                  <input type="checkbox" id="ExportStats" > Stats
+                </td>
+                <td style="width:33%; text-align:center" nowrap>
+                  <input type="checkbox" id="ExportColors" > Colors
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <tr class="ASBsettings">
+          <td style="width:50%;" nowrap>Overlay Time(s):</td>
+          <td style="width:50%;" nowrap>
+            <input type="number" id="ASBtime">
+          </td>
+        </tr>
+
+
+        <tr class="ASBsettings">
+          <td>Overlay Alpha:</td>
+          <td>
+            <input type="range" class="range" min="0" max="100" id="ASBalpha">
+          </td>
+        </tr>
+
+
+
+        <tr class="ASBsettings">
+          <td colspan="2" style="border-top:solid 2px"></td>
+        </tr>
+
+        <tr class="ASBsettings">
+          <th colspan="2">Alpha Coloring</th>
+        </tr>
+
+        <tr class="ASBsettings">
+          <td>Red:</td>
+          <td>
+            <input type="range" class="range" min="-100" max="100" id="ASBinvertR" onmouseup="window.location.href='myapp://rangerelease/'+this.id;">
+          </td>
+        </tr>
+
+        <tr class="ASBsettings">
+          <td>Green:</td>
+          <td>
+            <input type="range" class="range" min="-100" max="100" id="ASBinvertG" onmouseup="window.location.href='myapp://rangerelease/'+this.id;">
+          </td>
+        </tr>
+
+        <tr class="ASBsettings">
+          <td>Blue:</td>
+          <td>
+            <input type="range" class="range" min="-100" max="100" id="ASBinvertB" onmouseup="window.location.href='myapp://rangerelease/'+this.id;">
+          </td>
+        </tr>
+
+        <tr class="ASBsettings">
+          <td colspan="2" style="border-top:solid 2px"></td>
+        </tr>
+
+
+
+        <tr class="ASBsettings">
+          <th colspan="2">Color Overlay</th>
+        </tr>
+
+        <tr class="ASBsettings">
+          <td>Red:</td>
+          <td>
+            <input type="range" class="range" step="1" min="0" max="100" id="ASBalphaR" onmouseup="window.location.href='myapp://rangerelease/'+this.id;">
+          </td>
+        </tr>
+
+        <tr class="ASBsettings">
+          <td>Green:</td>
+          <td>
+            <input type="range" class="range" step="1" min="0" max="100" id="ASBalphaG" onmouseup="window.location.href='myapp://rangerelease/'+this.id;">
+          </td>
+        </tr>
+
+        <tr class="ASBsettings">
+          <td>Blue:</td>
+          <td>
+            <input type="range" class="range" step="1" min="0" max="100" id="ASBalphaB" onmouseup="window.location.href='myapp://rangerelease/'+this.id;">
+          </td>
+        </tr>
+
+        <tr class="ASBsettings">
+          <td colspan="2" style="border-top:solid 2px"></td>
+        </tr>
+
+        <tr class="ASBsettings">
+          <td>
+            <input type="checkbox" id="ASBgreyscale" onchange="window.location.href='myapp://rangerelease/'+this.id;"> Grey Scale
+          </td>
+          <td align="right">
+            <input type="button" value="Update Settings" onclick="goto(this)" id="UpdateASBsnip" >
+          </td>
+        </tr>
+
+      </table>
+
+  </td>
+</tr>
+
+
+
+<tr class="dropdownline" id="FeedBabiesDropDown" >
+  <td>
+    <input type="checkbox" onchange="check(this)" id="FeedBabiesCheck" >
+    <button type="button" onclick="buttonpress(this)" class="dropdownbutton" id="FeedBabies"> <img id="FeedBabiesArrow" src="Captures\Arrow0.png"> Feed Babies Spinner</button>
+  </td>
+</tr>
+
+<tr id="FeedBabiesContent" class="content">
+  <td colspan="10"> 
+    <table class="tablecontent">
+      <tr>
+        <td>Function Hotkey:</td>
+        <td><input type="text" id="FeedBabiesHotkey" ></td>
+      </tr>
+      <tr>
+        <td>Spin Time(ms):</td>
+        <td><input type="number" id="SpinPixels" ></td>
+      </tr>
+      <tr>
+        <td>Spin Direction:</td>
+        <td>
+          <input type="radio" id="SpinDir0" name="SpinDir" value="0" > Left
+          <input type="radio" id="SpinDir1" name="SpinDir" value="1" > Right
+        </td>
+      </tr>
+      <tr>
+        <td>Current Task:</td><td><input type="text" id="FeedBabiesDebugInfo" disabled value="Waiting..."></td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <table>
+            <tr>
+              <td style="width:75%;">
+                <input type="checkbox" id="FeedBabiesDebugCheck" > Show Tasks as Overlay
+              </td>
+              <td align="right">
+                <input type="button" value="Update" onclick="goto(this)" id="UpdateFeedBabies" >
+            </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>
+
+
+
+
+<tr class="dropdownline" id="FishingDropDown" >
+  <td>
+    <input type="checkbox" onchange="check(this)" id="FishingCheck" >
+    <button type="button" onclick="buttonpress(this)" class="dropdownbutton" id="Fishing"> <img id="FishingArrow" src="Captures\Arrow0.png"> Fishing</button>
+  </td>
+</tr>
+
+<tr id="FishingContent" class="content">
+  <td colspan="10"> 
+    <table class="tablecontent">
+      <tr>
+        <td>Function Hotkey:</td>
+        <td><input type="text" id="FishingHotkey" ></td>
+      </tr>
+      <tr>
+        <td>Current Task:</td><td><input type="text" id="FeedBabiesDebugInfo" disabled value="Waiting..."></td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <table>
+            <tr>
+              <td style="width:75%;">
+                <input type="checkbox" id="FishingDebugCheck" > Show Tasks as Overlay
+              </td>
+              <td align="right">
+                <input type="button" value="Update" onclick="goto(this)" id="UpdateFishing" >
+            </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>
+
+
+
+
+
+<tr class="dropdownline" id="GachaFarmingDropDown" >
+  <td>
+    <input type="checkbox" onchange="check(this)" id="GachaFarmingCheck" >
+    <button type="button" onclick="buttonpress(this)" class="dropdownbutton" id="GachaFarming"> <img id="GachaFarmingArrow" src="Captures\Arrow0.png"> Gacha Farming</button>
+  </td>
+</tr>
+
+<tr id="GachaFarmingContent" class="content">
+  <td colspan="10"> 
+    <table class="tablecontent">
+      <tr>
+        <td>Function Hotkey:</td>
+        <td><input type="text" id="GachaFarmingHotkey" ></td>
+      </tr>
+      <tr>
+        <td>
+          <input type="radio" id="GachaFarmingO10" name="GachaFarmingO1" value="0" onclick="goto(this)" > Seed Iguanadon
+        </td>
+        <td>
+          <input type="radio" id="GachaFarmingO11" name="GachaFarmingO1" value="1" onclick="goto(this)" > Open Crystals
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" style="border-top:solid 2px"></td>
+      </tr>
+
+
+      <tr id="GachaFarmingO2info1">
+        <td colspan="2">Make Seeds then:</td>
+      </tr>
+
+      <tr id="GachaFarmingO2info2"> 
+        <td>
+          <input type="radio" id="GachaFarmingO20" name="GachaFarmingO2" value="0" > Take Seeds
+        </td>
+        <td>
+          <input type="radio" id="GachaFarmingO21" name="GachaFarmingO2" value="1" > Drop Seeds
+        </td>
+      </tr>
+
+      <tr id="GachaFarmingO3info1">
+        <td colspan="2">Open Crystals then:</td>
+      </tr>
+
+      <tr id="GachaFarmingO3info2"> 
+        <td>
+          <input type="radio" id="GachaFarmingO30" name="GachaFarmingO3" value="0" > Transfer Items
+        </td>
+        <td>
+          <input type="radio" id="GachaFarmingO31" name="GachaFarmingO3" value="1" > Craft Element
+        </td>
+      </tr>
+      <tr>
+        <td>Current Task:</td><td><input type="text" id="GachaFarmingDebugInfo" disabled value="Waiting..."></td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <table>
+            <tr>
+              <td style="width:75%;">
+                <input type="checkbox" id="GachaFarmingDebugCheck" > Show Tasks as Overlay
+              </td>
+              <td align="right">
+                <input type="button" value="Update" onclick="goto(this)" id="UpdateGachaFarming" >
+            </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>
+
+
+<tr class="dropdownline" id="QuickTransferDropDown" >
+  <td>
+    <input type="checkbox" onchange="check(this)" id="QTCheck" >
+    <button type="button" onclick="buttonpress(this)" class="dropdownbutton" id="QT"> <img id="QTArrow" src="Captures\Arrow0.png"> Quick Transfer</button>
+  </td>
+</tr>
+
+<tr id="QTContent" class="content">
+  <td colspan="10"> 
+    <table class="tablecontent">
+      <tr>
+        <td>Function Hotkey:</td>
+        <td><input type="text" id="QTHotkey" ></td>
+      </tr>
+
+      <tr>
+        <td>Quick Transfer Preset:</td>
+        <td>
+        <select id="QTPresetNumber" onchange="window.location.href='myapp://QTPreset/'+this.value;">
+          <!--Start QTPreset -->
+          <option value='1'>1</option>
+          <option value='2'>2</option>
+          <option value='3'>3</option>
+          <!--End QTPreset -->
+        </select>
+      </td>
+      </tr>
+
+      <tr>
+        <td>Preset Name:</td>
+        <td><input type="text" id="QTPresetStr" ></td>
+      </tr>
+
+
+
+      <tr>
+        <td>
+          <input type="radio" id="QTDrop0" name="QTdrop" value="0" > Drop
+        </td>
+        <td>
+          <input type="radio" id="QTDrop1" name="QTdrop" value="1" > Transfer
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="radio" id="QTFromYou0" name="QTFromYou" value="0" > From You
+        </td>
+        <td>
+          <input type="radio" id="QTFromYou1" name="QTFromYou" value="1" > From Them
+        </td>
+      </tr>
+      <tr>
+        <td>Delay(ms):</td>
+        <td><input type="number" id="QTDelay" ></td>
+      </tr>
+      <tr>
+        <td>Search String(s):</td>
+        <td><input type="text" id="QTSearch" ></td>
+      </tr>
+
+
+
+
+
+
+
+      <tr>
+        <td colspan="2" style="border-top:solid 2px"></td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <input type="checkbox" id="AutoQTSlotCap" > Auto "Quick Transfer" on Slot Cap
+        </td>
+      </tr>
+      <tr>
+        <td>Auto Delay(s):</td>
+        <td><input type="number" id="AutoQTCapDelay" ></td>
+      </tr>
+
+
+
+
+      <tr>
+
+
+      <td>
+          <input type="button" onclick="window.location.href='myapp://QTPreset/'+this.id;" value="Remove Preset" id="QTRemovePreset">
+      </td>
+
+
+      <td align="right">
+        <input type="button" value="Update" onclick="goto(this)" id="UpdateQT">
+      </td>
+
+
+
+      </tr>
+    </table>
+  </td>
+</tr>
+
+
+
+
+<tr class="dropdownline" id="ServerInfoDropDown" >
+  <td>
+    <input type="checkbox" onchange="check(this)" id="ServerInfoCheck" >
+    <button type="button" onclick="buttonpress(this)" class="dropdownbutton" id="ServerInfo"> <img id="ServerInfoArrow" src="Captures\Arrow0.png"> Server Info</button>
+  </td>
+</tr>
+
+<tr id="ServerInfoContent" class="content">
+  <td colspan="10"> 
+
+    <table class="tablecontent" id="OfficialRates">
+    </table>
+
+    <table class="tablecontent">
+      <tr>
+        <th colspan="2" align="center">Favorite Servers</th>
+      </tr>
+    </table>
+
+
+    <table class="tablecontent" id="FavoriteServers">
+    </table>
+
+    <table class="tablecontent">
+      <tr>
+        <td colspan="2" style="border-top:solid 4px"></td>
+      </tr>
+    </table>
+
+
+    <table class="tablecontent">
+
+      <tr>
+        <th colspan="2" align="center">Server Lookup</th>
+      </tr>
+      <tr>
+        <td>Server String:</td>
+        <td><input type="text" id="ServerString" ></td>
+      </tr>
+      <tr>
+        <td>Refresh Interval(s):</td>
+        <td><input type="text" id="ServerRefresh" ></td>
+      </tr>
+    
+      <tr>
+        <td align="center" colspan="2">
+          <input type="button" onclick="goto(this)" id="ServerLog" value="Hide Server Log">
+          <input type="button" onclick="goto(this)" id="AddServer" value="Favorite Server" disabled>
+          <input type="button" value="Update" onclick="goto(this)" id="UpdateServer">
+        </td>
+      </tr>
+      <tr>
+        <th colspan="2" align="center" id="ServerTitle"></th>
+      </tr>
+      <tr>
+        <td colspan="2" style="border-top:solid 2px"></td>
+      </tr>
+
+
+    </table>
+
+    <table class="tablecontent" id="ServerHTML">
+    </table>
+
+  </td>
+</tr>
+
+
+
+
+<tr class="dropdownline" id="DebugDropDown" >
+  <td>
+    <input type="checkbox" onchange="check(this)" id="DebugCheck" >
+    <button type="button" onclick="buttonpress(this)" class="dropdownbutton" id="Debug"> <img id="DebugArrow" src="Captures\Arrow0.png"> Debug</button>
+  </td>
+</tr>
+
+<tr id="DebugContent" class="content">
+  <td colspan="10"> 
+    <table class="tablecontent">
+      
+      <tr><td><p id="BrowserInfo"></p></td></tr>
+
+    </table>
+  </td>
+</tr>
+
+
+</table>
+
+</p>
+
+
+
+
+
+
+
+<script>
+
+BrowserInfo();
+
+var img0 = 'Captures\\Arrow0.png';
+var img1 = 'Captures\\Arrow1.png';
+
+
+function check(id){
+  window.location.href = 'myapp://' + id.id + '?checked=' + id.checked;
+}
+
+function buttonpress(id){
+  var img = document.getElementById(id.id + 'Arrow');
+  var content = document.getElementById(id.id + 'Content');
+  if (content != null){
+    if (content.style.display === "block") {
+        content.style.display = "none";
+        img.src = img0;
+      } else {
+        content.style.display = "block";
+        img.src = img1;
+      }
+  }
+
+  window.location.href = 'myapp://' + id.id;
+}
+
+function goto(id){
+  window.location.href = 'myapp://' + id.id;
+}
+
+
+function rangerelease(id){
+  window.location.href = 'myapp://rangerelease/' + id.id;
+}
+
+function BrowserInfo(){
+  var nVer = navigator.appVersion;
+  var nAgt = navigator.userAgent;
+  var browserName  = navigator.appName;
+  var fullVersion  = ''+parseFloat(navigator.appVersion); 
+  var majorVersion = parseInt(navigator.appVersion,10);
+  var nameOffset,verOffset,ix;
+
+  // In Opera, the true version is after "Opera" or after "Version"
+  if ((verOffset=nAgt.indexOf("Opera"))!=-1) {
+   browserName = "Opera";
+   fullVersion = nAgt.substring(verOffset+6);
+   if ((verOffset=nAgt.indexOf("Version"))!=-1) 
+     fullVersion = nAgt.substring(verOffset+8);
+  }
+  // In MSIE, the true version is after "MSIE" in userAgent
+  else if ((verOffset=nAgt.indexOf("MSIE"))!=-1) {
+   browserName = "Microsoft Internet Explorer";
+   fullVersion = nAgt.substring(verOffset+5);
+  }
+  // In Chrome, the true version is after "Chrome" 
+  else if ((verOffset=nAgt.indexOf("Chrome"))!=-1) {
+   browserName = "Chrome";
+   fullVersion = nAgt.substring(verOffset+7);
+  }
+  // In Safari, the true version is after "Safari" or after "Version" 
+  else if ((verOffset=nAgt.indexOf("Safari"))!=-1) {
+   browserName = "Safari";
+   fullVersion = nAgt.substring(verOffset+7);
+   if ((verOffset=nAgt.indexOf("Version"))!=-1) 
+     fullVersion = nAgt.substring(verOffset+8);
+  }
+  // In Firefox, the true version is after "Firefox" 
+  else if ((verOffset=nAgt.indexOf("Firefox"))!=-1) {
+   browserName = "Firefox";
+   fullVersion = nAgt.substring(verOffset+8);
+  }
+  // In most other browsers, "name/version" is at the end of userAgent 
+  else if ( (nameOffset=nAgt.lastIndexOf(' ')+1) < 
+            (verOffset=nAgt.lastIndexOf('/')) ) 
+  {
+   browserName = nAgt.substring(nameOffset,verOffset);
+   fullVersion = nAgt.substring(verOffset+1);
+   if (browserName.toLowerCase()==browserName.toUpperCase()) {
+    browserName = navigator.appName;
+   }
+  }
+  // trim the fullVersion string at semicolon/space if present
+  if ((ix=fullVersion.indexOf(";"))!=-1)
+     fullVersion=fullVersion.substring(0,ix);
+  if ((ix=fullVersion.indexOf(" "))!=-1)
+     fullVersion=fullVersion.substring(0,ix);
+
+  majorVersion = parseInt(''+fullVersion,10);
+  if (isNaN(majorVersion)) {
+   fullVersion  = ''+parseFloat(navigator.appVersion); 
+   majorVersion = parseInt(navigator.appVersion,10);
+  }
+
+
+  document.getElementById("BrowserInfo").innerHTML = ''
+   +'Browser name  = '+browserName+'<br>'
+   +'Full version  = '+fullVersion+'<br>'
+   +'Major version = '+majorVersion+'<br>'
+   +'navigator.appName = '+navigator.appName+'<br>'
+   +'navigator.userAgent = '+navigator.userAgent+'<br>';
+}
+
+
+function transitionimage(URL){
+  document.getElementById('SplashImageBottom').src = document.getElementById('SplashImageTop').src;
+  document.getElementById('SplashImageBottom').style.opacity = 0.90;
+  document.getElementById('SplashImageTop').style.opacity = 0.00;
+  document.getElementById('SplashImageTop').src = URL;
+
+  NewOpacity = 0.00;         //no var in front means global?
+  IntervalID = setInterval(IncreaseOpacity, 125);
+}
+
+function IncreaseOpacity(){
+  //alert(round(1.0 - NewOpacity,2));
+  if (NewOpacity > 1.0){
+     clearInterval(IntervalID)
+  }else{
+    //document.getElementById('SplashImageTop').style.opacity = NewOpacity;
+    document.getElementById('SplashImageTop').style.opacity = round(1.7*NewOpacity-0.77*NewOpacity*NewOpacity,2);
+    document.getElementById('SplashImageBottom').style.opacity = round(0.95 - NewOpacity,2);
+    NewOpacity = round(NewOpacity + 0.05,2);  
+  }
+}
+
+function round(value, decimals) {
+  return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
+}
+</script>
+
+</body>
+</html>
