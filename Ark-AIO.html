@@ -382,7 +382,7 @@ div#Splashdiv {
 <!-- --------------------------------------------------------------------------------------------------------- -->
 
       <tr class="alertnotify" id="alertnotify2">
-        <td>Notify Text:</td><td><input type="text" id="CDNotify" ></td>
+        <td>Notify Message:</td><td><input type="text" id="CDNotify" ></td>
       </tr>
 
       <tr class="alertnotify" id="alertnotify3">
@@ -396,7 +396,7 @@ div#Splashdiv {
 
 
       <tr class="alertnotify" id="alertnotify5">
-        <td>Food Text:</td><td><input type="text" id="CDFoodNotify" ></td>
+        <td>Food Message:</td><td><input type="text" id="CDFoodNotify" ></td>
       </tr>
 
 
@@ -658,27 +658,39 @@ div#Splashdiv {
 
       <tr>
         <td colspan="2">
-          <input type="checkbox" id="ConsoleVariables1" > Foliage
+          <input type="checkbox" id="ConsoleVariables1" > Hide Foliage<br>(foliage.UseOcclusionType)
         </td>
       </tr>
 
       <tr>
         <td colspan="2">
-          <input type="checkbox" id="ConsoleVariables2" > Light Complexity
+          <input type="checkbox" id="ConsoleVariables2" > Simple Lighting<br>(ShowFlag.LightComplexity)
         </td>
       </tr>
 
       <tr>
         <td colspan="2">
-          <input type="checkbox" id="ConsoleVariables3" > Clear Water (ShowFlag.Materials=0)
+          <input type="checkbox" id="ConsoleVariables3" > Clear Water<br>(ShowFlag.Materials)
         </td>
       </tr>
 
+      <tr>
+        <td colspan="2">
+          <input type="checkbox" id="ConsoleVariables4" > Disable Fog<br>(ShowFlag.Fog)
+        </td>
+      </tr>
+
+      <tr>
+        <td colspan="2">
+          <input type="checkbox" id="ConsoleVariables5" > Disable Fog 2<br>(FogDensity)
+        </td>
+      </tr>
 
 
       <tr>
         <td colspan="2" align="center">
-          <input type="button" value="Update Console Variables" onclick="goto(this)" id="UpdateConsoleVariables">
+          <input type="button" value="Show ini" onclick="goto(this)" id="RunConsoleVariables">
+          <input type="button" value="Update ini" onclick="goto(this)" id="UpdateConsoleVariables">
         </td>
       </tr>
     </table>
@@ -755,17 +767,7 @@ div#Splashdiv {
 <tr id="DinoExportContent" class="content">
   <td colspan="10"> 
 
-    <table class="tablecontent">
 
-      <tr>
-        <td colspan="2">
-          <input type="checkbox" id="NameYourCheck" onchange="check(this)"> Close Naming Window on Claim
-        </td>
-      </tr>
-      <tr>
-        <td colspan="2" style="border-top:solid 2px"></td>
-      </tr>
-    </table>
 
       <table class="tablecontent" id="DinoExportTable">
       </table>
@@ -786,6 +788,25 @@ div#Splashdiv {
           <td colspan="2" style="border-top:solid 2px"></td>
         </tr>
 
+
+
+        <tr class="ASBsettings">
+          <td colspan="2">
+            <input type="checkbox" id="NameYourCheck" onchange="check(this)"> Close Naming Window on Claim
+          </td>
+        </tr>
+        <tr class="ASBsettings">
+          <td colspan="2" style="border-top:solid 2px"></td>
+        </tr>
+
+        <tr class="ASBsettings">
+          <td colspan="2">
+            <input type="checkbox" id="ClipMutNumsCheck" onchange="check(this)"> Copy Mut Numbers to Clipboard
+          </td>
+        </tr>
+        <tr class="ASBsettings">
+          <td colspan="2" style="border-top:solid 2px"></td>
+        </tr>
 
         <tr class="ASBsettings">
           <td colspan="2">
@@ -1170,7 +1191,7 @@ div#Splashdiv {
 
 <tr class="dropdownline" id="ServerInfoDropDown" >
   <td>
-    <input type="checkbox" onchange="check(this)" id="ServerInfoCheck" >
+    <input type="checkbox" onchange="check(this)" id="ServerInfoMainCheck" >
     <button type="button" onclick="buttonpress(this)" class="dropdownbutton" id="ServerInfo"> <img id="ServerInfoArrow" src="Captures\Arrow0.png"> Server Info</button>
   </td>
 </tr>
@@ -1178,30 +1199,80 @@ div#Splashdiv {
 <tr id="ServerInfoContent" class="content">
   <td colspan="10"> 
 
-    <table class="tablecontent" id="OfficialRates">
-    </table>
 
     <table class="tablecontent">
       <tr>
-        <th colspan="2" align="center">Favorite Servers</th>
+        <td colspan="2" align="left">
+          <div style="white-space: nowrap;">
+            <div style="min-width: 45px; display: inline-block; white-space: nowrap; text-align: right;">
+              <input type="checkbox" onchange="check(this)" id="OfficialRatesCheck" >
+            </div>
+            <div style="display: inline-block;">
+              <button type="button" onclick="buttonpress(this)" class="dropdownbutton" id="OfficialRates"> <img id="OfficialRatesArrow" src="Captures\Arrow0.png"></button> 
+              <b>Official Rates</b>
+            </div>
+        </td>
       </tr>
     </table>
 
 
-    <table class="tablecontent" id="FavoriteServers">
+    <table class="tablecontent" id="OfficialRatesContent">
     </table>
+
 
     <table class="tablecontent">
       <tr>
-        <td colspan="2" style="border-top:solid 4px"></td>
+        <td colspan="2" style="border-top:solid 2px"></td>
       </tr>
     </table>
 
 
     <table class="tablecontent">
-
       <tr>
-        <th colspan="2" align="center">Server Lookup</th>
+        <td colspan="2" align="left">
+          <div style="white-space: nowrap;">
+            <div style="min-width: 45px; display: inline-block; white-space: nowrap; text-align: right;">
+
+            </div>
+            <div style="display: inline-block;">
+              <button type="button" onclick="buttonpress(this)" class="dropdownbutton" id="FavoriteServers"> <img id="FavoriteServersArrow" src="Captures\Arrow0.png"></button> 
+              <b>Favorite Servers</b>
+            </div>
+        </td>
+      </tr>
+    </table>
+
+    <table class="tablecontent" id="NoFavoriteServersContent">
+      <tr>
+        <td colspan="2">No Servers Added</td>
+      </tr>
+      <tr>
+        <td colspan="2">Use Server Lookup</td>
+      </tr>
+    </table>
+
+    <table class="tablecontent" id="FavoriteServersContent">
+    </table>
+
+    <table class="tablecontent">
+      <tr>
+        <td colspan="2" style="border-top:solid 2px"></td>
+      </tr>
+    </table>
+
+
+    <table class="tablecontent">
+      <tr>
+        <td colspan="2" align="left">
+          <div style="white-space: nowrap;">
+            <div style="min-width: 45px; display: inline-block; white-space: nowrap; text-align: right;">
+                <input type="checkbox" onchange="check(this)" id="ServerLookupCheck" >
+            </div>
+            <div style="display: inline-block;">
+                <button type="button" onclick="buttonpress(this)" class="dropdownbutton" id="ServerLookup"> <img id="ServerLookupArrow" src="Captures\Arrow0.png"></button>
+                <b>Server Lookup</b>
+            </div>
+        </td>
       </tr>
       <tr>
         <td>Server String:</td>
@@ -1214,22 +1285,13 @@ div#Splashdiv {
     
       <tr>
         <td align="center" colspan="2">
-          <input type="button" onclick="goto(this)" id="ServerLog" value="Hide Server Log">
           <input type="button" onclick="goto(this)" id="AddServer" value="Favorite Server" disabled>
           <input type="button" value="Update" onclick="goto(this)" id="UpdateServer">
         </td>
       </tr>
-      <tr>
-        <th colspan="2" align="center" id="ServerTitle"></th>
-      </tr>
-      <tr>
-        <td colspan="2" style="border-top:solid 2px"></td>
-      </tr>
-
-
     </table>
 
-    <table class="tablecontent" id="ServerHTML">
+    <table class="tablecontent" id="ServerLookupContent">
     </table>
 
   </td>
@@ -1285,9 +1347,13 @@ function buttonpress(id){
     if (content.style.display === "block") {
         content.style.display = "none";
         img.src = img0;
+        if (id.id === "FavoriteServers")
+          document.getElementById('NoFavoriteServersContent').style.display = "none"
       } else {
         content.style.display = "block";
         img.src = img1;
+        if (id.id === "FavoriteServers")
+          document.getElementById('NoFavoriteServersContent').style.display = "block"
       }
   }
 
