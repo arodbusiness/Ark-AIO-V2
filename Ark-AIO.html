@@ -21,13 +21,13 @@ body{
   overflow: hidden;
   margin: 0px 0px;
   width:100% !important;
+  font-size: 16px;
 }
 
 .dropdownline {
   background-image: -ms-linear-gradient(top, #111111, #333333);
   border: none;
   border-collapse: collapse;
-  font-size: 16px;
   padding: 6px;
 }
 
@@ -37,7 +37,8 @@ body{
   cursor: pointer;
   border: none;
   text-align: left;
-  font-size: 16px;
+  font-size: 18px;
+  font-weight: bold;
 }
 
 tr.content {
@@ -62,12 +63,22 @@ table, td, tr {
   width: 95%;
 }
 
+.collapseablecontent {
+  width: 95%;
+  display: none;
+}
+
 
 input, select {
   background-color: #111111;
   color: white;
+  font-size: 16px;
 }
 
+input[type=button]  {
+  font-weight: bold;
+  font-size: 18px;
+}
 
 input[type=text], input[type=number]  {
   width: 100%;
@@ -212,14 +223,34 @@ div#Splashdiv {
 
 <tr class="dropdownline" id="AlertsDropDown" >
   <td>
-    <input type="checkbox" onchange="check(this)" id="AlertsCheck" >
+    
     <button type="button" onclick="buttonpress(this)" class="dropdownbutton" id="Alerts"> <img id="AlertsArrow" src="Captures\Arrow0.png"> Alerts</button>
   </td>
 </tr>
 
 <tr id="AlertsContent" class="content">
   <td colspan="10"> 
+
     <table class="tablecontent">
+      <tr>
+        <td colspan="2" align="left">
+          <div style="white-space: nowrap;">
+            <div style="min-width: 45px; display: inline-block; white-space: nowrap; text-align: right;">
+              <input type="checkbox" onchange="check(this)" id="AlertsCheck" >
+            </div>
+            <div style="display: inline-block;">
+              <button type="button" onclick="buttonpress(this)" class="dropdownbutton" id="ActualAlerts"> <img id="ActualAlertsArrow" src="Captures\Arrow0.png"></button> 
+              <b>Alerts Enabled</b>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </table>
+
+    <table class="collapseablecontent" id="ActualAlertsContent">
+      <tr>
+        <td colspan="2" style="border-top:solid 2px"></td>
+      </tr>
       <tr>
         <td>Repeat Delay(s):</td>
         <td><input type="number" id="AlertsDelay" ></td>
@@ -258,6 +289,7 @@ div#Splashdiv {
           <input type="button" value="Update Alerts" onclick="goto(this)" id="UpdateAlerts">
         </td>
       </tr>
+    </table>
 <!--LastAlert--> 
 <!--
       <tr>
@@ -309,27 +341,26 @@ div#Splashdiv {
 
 
 
-
-
-
-
+    <table class="tablecontent">
       <tr>
-        <td colspan="2" style="border-top:solid 2px"></td>
+        <td colspan="2" style="border-top:solid 4px"></td>
       </tr>
-
       <tr>
-        <td colspan="2" style="border-top:solid 2px"></td>
-      </tr>
-
-
-   
-      <tr>
-        <td colspan="2" align="center">
-          <input type="checkbox" id="CDCheck" onclick="goto(this)" >
-          Countdown Timer
+        <td colspan="2" align="left">
+          <div style="white-space: nowrap;">
+            <div style="min-width: 45px; display: inline-block; white-space: nowrap; text-align: right;">
+              <input type="checkbox" onchange="check(this)" id="CDCheck" >
+            </div>
+            <div style="display: inline-block;">
+              <button type="button" onclick="buttonpress(this)" class="dropdownbutton" id="CD"> <img id="CDArrow" src="Captures\Arrow0.png"></button> 
+              <b>Countdown Timer</b>
+            </div>
+          </div>
         </td>
       </tr>
+    </table>
 
+    <table class="collapseablecontent" id="CDContent">
       <tr>
         <td colspan="2">
           <input type="checkbox" id="CDScreenDisp" >
@@ -423,25 +454,30 @@ div#Splashdiv {
           <input type="button" onclick="goto(this)" id="UpdateCountdown" value="Update Countdown" >
         </td>
       </tr>
+    </table>
 
-
-
-
+    <table class="tablecontent">
       <tr>
-        <td colspan="2" style="border-top:solid 2px"></td>
+        <td colspan="2" style="border-top:solid 4px"></td>
       </tr>
-
       <tr>
-        <td colspan="2" style="border-top:solid 2px"></td>
-      </tr>
-
-
-
-
-      <tr>
-        <td colspan="2">
-          <input type="checkbox" id="AlertAltSound" > Use Alert Sound Device
+        <td colspan="2" align="left">
+          <div style="white-space: nowrap;">
+            <div style="min-width: 45px; display: inline-block; white-space: nowrap; text-align: right;">
+              <input type="checkbox" onchange="check(this)" id="AlertAltCheck" >
+            </div>
+            <div style="display: inline-block;">
+              <button type="button" onclick="buttonpress(this)" class="dropdownbutton" id="AlertAlt"> <img id="AlertAltArrow" src="Captures\Arrow0.png"></button> 
+              <b>Use Alternate Sound Device</b>
+            </div>
+          </div>
         </td>
+      </tr>
+    </table>
+
+    <table class="collapseablecontent" id="AlertAltContent">
+      <tr>
+        <td colspan="2" style="border-top:solid 2px"></td>
       </tr>
 
       <tr>
@@ -471,7 +507,6 @@ div#Splashdiv {
 
 <tr class="dropdownline" id="AutoClickDropDown" >
   <td>
-    <input type="checkbox" onchange="check(this)" id="AutoClickCheck" >
     <button type="button" onclick="buttonpress(this)" class="dropdownbutton" id="AutoClick"> <img id="AutoClickArrow" src="Captures\Arrow0.png"> Auto Click</button>
   </td>
 </tr>
@@ -479,6 +514,11 @@ div#Splashdiv {
 <tr id="AutoClickContent" class="content">
   <td colspan="10"> 
     	<table class="tablecontent">
+        <tr>
+          <td colspan="2" align="center">
+            <input type="checkbox" onchange="check(this)" id="AutoClickCheck" > Auto Click Enabled
+          </td>
+        </tr>
         <tr>
           <td>Function Hotkey:</td>
           <td><input type="text" id="AutoClickHotkey"  ></td>
@@ -547,7 +587,6 @@ div#Splashdiv {
 
 <tr class="dropdownline" id="AutoFoodWaterDropDown" >
   <td>
-    <input type="checkbox" onchange="check(this)" id="AutoFoodWaterCheck" >
     <button type="button" onclick="buttonpress(this)" class="dropdownbutton" id="AutoFoodWater"> <img id="AutoFoodWaterArrow" src="Captures\Arrow0.png"> Auto Food Water</button>
   </td>
 </tr>
@@ -556,6 +595,11 @@ div#Splashdiv {
 <tr id="AutoFoodWaterContent" class="content">
   <td colspan="10">
     <table class="tablecontent">
+      <tr>
+        <td colspan="2" align="center">
+          <input type="checkbox" onchange="check(this)" id="AutoFoodWaterCheck" > Auto Food Water Enabled
+        </td>
+      </tr>
       <tr>
         <td nowrap>Food Key: 
           <select id="FoodKey">
@@ -646,7 +690,6 @@ div#Splashdiv {
 
 <tr class="dropdownline" id="ConsoleVariablesDropDown" >
   <td>
-    <input type="checkbox" onchange="check(this)" id="ConsoleVariablesCheck" >
     <button type="button" onclick="buttonpress(this)" class="dropdownbutton" id="ConsoleVariables"> <img id="ConsoleVariablesArrow" src="Captures\Arrow0.png"> Console Variables</button>
   </td>
 </tr>
@@ -700,7 +743,6 @@ div#Splashdiv {
 
 <tr class="dropdownline" id="CrosshairDropDown" >
   <td>
-    <input type="checkbox" onchange="check(this)" id="CrosshairCheck" >
     <button type="button" onclick="buttonpress(this)" class="dropdownbutton" id="Crosshair"> <img id="CrosshairArrow" src="Captures\Arrow0.png"> Crosshair</button>
   </td>
 </tr>
@@ -708,6 +750,11 @@ div#Splashdiv {
 <tr id="CrosshairContent" class="content">
   <td>
     <table class="tablecontent">
+    <tr>
+      <td colspan="2" align="center">
+        <input type="checkbox" onchange="check(this)" id="CrosshairCheck" > Crosshair Enabled
+      </td>
+    </tr>
     <tr>
       <td>Diameter:<br>(Pixels)</td>
       <td>
@@ -757,166 +804,328 @@ div#Splashdiv {
 
 
 
+
+
+
+
+
+
 <tr class="dropdownline" id="DinoExportDropDown" >
   <td>
-    <input type="checkbox" onchange="check(this)" id="DinoExportCheck" >
     <button type="button" onclick="buttonpress(this)" class="dropdownbutton" id="DinoExport"> <img id="DinoExportArrow" src="Captures\Arrow0.png"> Dino Export</button>
   </td>
 </tr>
 
+
+
+
+
 <tr id="DinoExportContent" class="content">
   <td colspan="10"> 
+    <table class="tablecontent">
+      <tr>
+        <td colspan="2" align="left">
+          <div style="white-space: nowrap;">
+            <div style="min-width: 45px; display: inline-block; white-space: nowrap; text-align: right;">
+              <input type="checkbox" onchange="check(this)" id="AutoDinoExportCheck" >
+            </div>
+            <div style="display: inline-block;">
+              <button type="button" onclick="buttonpress(this)" class="dropdownbutton" id="AutoDinoExport"> <img id="AutoDinoExportArrow" src="Captures\Arrow0.png"></button> 
+              <b>Auto Dino Export Enabled</b>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </table>
 
 
 
-      <table class="tablecontent" id="DinoExportTable">
-      </table>
-  
-      <table class="tablecontent">
-        <tr>
-          <td colspan="2" align="center" nowrap>
-            <input type="button" onclick="goto(this)" id="TotalExports" value="Clean Exports" class="ExportBtn">
-          
-            <input type="button" onclick="goto(this)" id="ASBsettings" value="Hide Settings" class="ExportBtn">
-          
-            <input type="button" onclick="goto(this)" id="LastExport" value="Last Export" class="ExportBtn">
-          </td>
-        </tr>
 
-
-        <tr class="ASBsettings">
-          <td colspan="2" style="border-top:solid 2px"></td>
-        </tr>
+    <table class="collapseablecontent" id="AutoDinoExportContent">
+      <tr>
+        <td colspan="2" align="left">
+          <table class="collapseablecontent" id="DinoExportTable">
+          </table>
 
 
 
-        <tr class="ASBsettings">
-          <td colspan="2">
-            <input type="checkbox" id="NameYourCheck" onchange="check(this)"> Close Naming Window on Claim
-          </td>
-        </tr>
-        <tr class="ASBsettings">
-          <td colspan="2" style="border-top:solid 2px"></td>
-        </tr>
+          <table class="tablecontent">
+            <tr>
+              <td colspan="2" align="center" nowrap>
+                <input type="button" onclick="goto(this)" id="TotalExports" value="Clean Exports" class="ExportBtn">
+                <input type="button" onclick="goto(this)" id="LastExport" value="Last Export" class="ExportBtn">
+              </td>
+            </tr>
+          </table>
 
-        <tr class="ASBsettings">
-          <td colspan="2">
-            <input type="checkbox" id="ClipMutNumsCheck" onchange="check(this)"> Copy Mut Numbers to Clipboard
-          </td>
-        </tr>
-        <tr class="ASBsettings">
-          <td colspan="2" style="border-top:solid 2px"></td>
-        </tr>
+          <table class="tablecontent">
+            <tr>
+              <td colspan="2" align="left">
+                <div style="white-space: nowrap;">
+                  <div style="min-width: 45px; display: inline-block; white-space: nowrap; text-align: right;">
+                    
+                  </div>
+                  <div style="display: inline-block;">
+                    <button type="button" onclick="buttonpress(this)" class="dropdownbutton" id="DinoExportSettings"> <img id="DinoExportSettingsArrow" src="Captures\Arrow0.png"></button> 
+                    <b>Dino Export Settings</b>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </table>
 
-        <tr class="ASBsettings">
-          <td colspan="2">
-            <table>
-              <tr>
-                <td style="width:33%; text-align:center" nowrap>
-                  <input type="checkbox" id="ExportRaising" > Raising
-                </td>
-                <td style="width:33%; text-align:center" nowrap>
-                  <input type="checkbox" id="ExportStats" > Stats
-                </td>
-                <td style="width:33%; text-align:center" nowrap>
-                  <input type="checkbox" id="ExportColors" > Colors
-                </td>
-              </tr>
-            </table>
-          </td>
-        </tr>
+          <table class="collapseablecontent" id="DinoExportSettingsContent">
+            <tr>
+              <td colspan="2" style="border-top:solid 2px"></td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <table>
+                  <tr>
+                    <td style="width:33%; text-align:center" nowrap>
+                      <input type="checkbox" id="ExportRaising" > Raising
+                    </td>
+                    <td style="width:33%; text-align:center" nowrap>
+                      <input type="checkbox" id="ExportStats" > Stats
+                    </td>
+                    <td style="width:33%; text-align:center" nowrap>
+                      <input type="checkbox" id="ExportColors" > Colors
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
 
-        <tr class="ASBsettings">
-          <td style="width:50%;" nowrap>Overlay Time(s):</td>
-          <td style="width:50%;" nowrap>
-            <input type="number" id="ASBtime">
-          </td>
-        </tr>
-
-
-        <tr class="ASBsettings">
-          <td>Overlay Alpha:</td>
-          <td>
-            <input type="range" class="range" min="0" max="100" id="ASBalpha">
-          </td>
-        </tr>
+            <tr>
+              <td style="width:50%;" nowrap>Overlay Time(s):</td>
+              <td style="width:50%;" nowrap>
+                <input type="number" id="ASBtime">
+              </td>
+            </tr>
 
 
-
-        <tr class="ASBsettings">
-          <td colspan="2" style="border-top:solid 2px"></td>
-        </tr>
-
-        <tr class="ASBsettings">
-          <th colspan="2">Alpha Coloring</th>
-        </tr>
-
-        <tr class="ASBsettings">
-          <td>Red:</td>
-          <td>
-            <input type="range" class="range" min="-100" max="100" id="ASBinvertR" onmouseup="window.location.href='myapp://rangerelease/'+this.id;">
-          </td>
-        </tr>
-
-        <tr class="ASBsettings">
-          <td>Green:</td>
-          <td>
-            <input type="range" class="range" min="-100" max="100" id="ASBinvertG" onmouseup="window.location.href='myapp://rangerelease/'+this.id;">
-          </td>
-        </tr>
-
-        <tr class="ASBsettings">
-          <td>Blue:</td>
-          <td>
-            <input type="range" class="range" min="-100" max="100" id="ASBinvertB" onmouseup="window.location.href='myapp://rangerelease/'+this.id;">
-          </td>
-        </tr>
-
-        <tr class="ASBsettings">
-          <td colspan="2" style="border-top:solid 2px"></td>
-        </tr>
+            <tr>
+              <td>Overlay Alpha:</td>
+              <td>
+                <input type="range" class="range" min="0" max="100" id="ASBalpha">
+              </td>
+            </tr>
 
 
 
-        <tr class="ASBsettings">
-          <th colspan="2">Color Overlay</th>
-        </tr>
+            <tr>
+              <td colspan="2" style="border-top:solid 2px"></td>
+            </tr>
 
-        <tr class="ASBsettings">
-          <td>Red:</td>
-          <td>
-            <input type="range" class="range" step="1" min="0" max="100" id="ASBalphaR" onmouseup="window.location.href='myapp://rangerelease/'+this.id;">
-          </td>
-        </tr>
+            <tr>
+              <th colspan="2">Alpha Coloring</th>
+            </tr>
 
-        <tr class="ASBsettings">
-          <td>Green:</td>
-          <td>
-            <input type="range" class="range" step="1" min="0" max="100" id="ASBalphaG" onmouseup="window.location.href='myapp://rangerelease/'+this.id;">
-          </td>
-        </tr>
+            <tr>
+              <td>Red:</td>
+              <td>
+                <input type="range" class="range" min="-100" max="100" id="ASBinvertR" onmouseup="window.location.href='myapp://rangerelease/'+this.id;">
+              </td>
+            </tr>
 
-        <tr class="ASBsettings">
-          <td>Blue:</td>
-          <td>
-            <input type="range" class="range" step="1" min="0" max="100" id="ASBalphaB" onmouseup="window.location.href='myapp://rangerelease/'+this.id;">
-          </td>
-        </tr>
+            <tr>
+              <td>Green:</td>
+              <td>
+                <input type="range" class="range" min="-100" max="100" id="ASBinvertG" onmouseup="window.location.href='myapp://rangerelease/'+this.id;">
+              </td>
+            </tr>
 
-        <tr class="ASBsettings">
-          <td colspan="2" style="border-top:solid 2px"></td>
-        </tr>
+            <tr>
+              <td>Blue:</td>
+              <td>
+                <input type="range" class="range" min="-100" max="100" id="ASBinvertB" onmouseup="window.location.href='myapp://rangerelease/'+this.id;">
+              </td>
+            </tr>
 
-        <tr class="ASBsettings">
-          <td>
-            <input type="checkbox" id="ASBgreyscale" onchange="window.location.href='myapp://rangerelease/'+this.id;"> Grey Scale
-          </td>
-          <td align="right">
-            <input type="button" value="Update Settings" onclick="goto(this)" id="UpdateASBsnip" >
-          </td>
-        </tr>
+            <tr>
+              <td colspan="2" style="border-top:solid 2px"></td>
+            </tr>
 
-      </table>
+
+
+            <tr>
+              <th colspan="2">Color Overlay</th>
+            </tr>
+
+            <tr>
+              <td>Red:</td>
+              <td>
+                <input type="range" class="range" step="1" min="0" max="100" id="ASBalphaR" onmouseup="window.location.href='myapp://rangerelease/'+this.id;">
+              </td>
+            </tr>
+
+            <tr>
+              <td>Green:</td>
+              <td>
+                <input type="range" class="range" step="1" min="0" max="100" id="ASBalphaG" onmouseup="window.location.href='myapp://rangerelease/'+this.id;">
+              </td>
+            </tr>
+
+            <tr>
+              <td>Blue:</td>
+              <td>
+                <input type="range" class="range" step="1" min="0" max="100" id="ASBalphaB" onmouseup="window.location.href='myapp://rangerelease/'+this.id;">
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="2" style="border-top:solid 2px"></td>
+            </tr>
+
+            <tr>
+              <td>
+                <input type="checkbox" id="ASBgreyscale" onchange="window.location.href='myapp://rangerelease/'+this.id;"> Grey Scale
+              </td>
+              <td align="right">
+                <input type="button" value="Update Settings" onclick="goto(this)" id="UpdateASBsnip" >
+              </td>
+            </tr>
+          </table>
+
+
+        </td>
+      </tr>
+
+    </table>
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+    <table class="tablecontent">
+      <tr>
+        <td colspan="2" style="border-top:solid 4px"></td>
+      </tr>
+      <tr>
+        <td colspan="2" align="left">
+          <div style="white-space: nowrap;">
+            <div style="min-width: 45px; display: inline-block; white-space: nowrap; text-align: right;">
+              <input type="checkbox" onchange="check(this)" id="NameYourCheck" >
+            </div>
+            <div style="display: inline-block;">
+              <b>Close Naming Window on Claim</b>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" align="left">
+          <div style="white-space: nowrap;">
+            <div style="min-width: 45px; display: inline-block; white-space: nowrap; text-align: right;">
+              <input type="checkbox" onchange="check(this)" id="DebugNamingWindowCheck" >
+            </div>
+            <div style="display: inline-block;">
+              <b>Show Debug Naming Window</b>
+            </div>
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <td colspan="2" style="border-top:solid 4px"></td>
+      </tr>
+
+      <tr>
+        <td colspan="2" align="left">
+          <div style="white-space: nowrap;">
+            <div style="min-width: 45px; display: inline-block; white-space: nowrap; text-align: right;">
+              <input type="checkbox" onchange="check(this)" id="CaptureHelenaCheck" >
+            </div>
+            <div style="display: inline-block;">
+              <button type="button" onclick="buttonpress(this)" class="dropdownbutton" id="CaptureHelena"> <img id="CaptureHelenaArrow" src="Captures\Arrow0.png"></button> 
+              <b>Capture Helena Info</b>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </table>
+
+
+    <table class="collapseablecontent" id="CaptureHelenaContent">
+      <tr>
+        <td style="width:50%;" nowrap>Overlay Time(s):</td>
+        <td style="width:50%;" nowrap>
+          <input type="number" id="HelenaTime">
+        </td>
+      </tr>
+
+      <tr>
+        <td style="width:50%;" nowrap>Offset X:</td>
+        <td style="width:50%;" nowrap>
+          <input type="number" id="HelenaXoff">
+        </td>
+      </tr>
+
+      <tr>
+        <td style="width:50%;" nowrap>Offset Y:</td>
+        <td style="width:50%;" nowrap>
+          <input type="number" id="HelenaYoff">
+        </td>
+      </tr>
+
+      <tr>
+        <td style="width:50%;" nowrap>Window X:</td>
+        <td style="width:50%;" nowrap>
+          <input type="number" id="HelenaX">
+        </td>
+      </tr>
+
+      <tr>
+        <td style="width:50%;" nowrap>Window Y:</td>
+        <td style="width:50%;" nowrap>
+          <input type="number" id="HelenaY">
+        </td>
+      </tr>
+
+      <tr>
+        <td style="width:50%;" nowrap>Window W:</td>
+        <td style="width:50%;" nowrap>
+          <input type="number" id="HelenaW">
+        </td>
+      </tr>
+
+      <tr>
+        <td style="width:50%;" nowrap>Window H:</td>
+        <td style="width:50%;" nowrap>
+          <input type="number" id="HelenaH">
+        </td>
+      </tr>
+
+
+      <tr>
+        <td>Overlay Alpha:</td>
+        <td>
+          <input type="range" class="range" min="0" max="100" id="HelenaA">
+        </td>
+      </tr>
+
+      <tr>
+        <td colspan="2" align="right">
+          <input type="button" onclick="goto(this)" id="UpdateHelena" value="Update Helena">
+        </td>
+      </tr>
+
+      <tr>
+        <td colspan="2" style="border-top:solid 4px"></td>
+      </tr>
+    </table>
 
   </td>
 </tr>
@@ -925,7 +1134,7 @@ div#Splashdiv {
 
 <tr class="dropdownline" id="FeedBabiesDropDown" >
   <td>
-    <input type="checkbox" onchange="check(this)" id="FeedBabiesCheck" >
+    
     <button type="button" onclick="buttonpress(this)" class="dropdownbutton" id="FeedBabies"> <img id="FeedBabiesArrow" src="Captures\Arrow0.png"> Feed Babies Spinner</button>
   </td>
 </tr>
@@ -933,6 +1142,11 @@ div#Splashdiv {
 <tr id="FeedBabiesContent" class="content">
   <td colspan="10"> 
     <table class="tablecontent">
+      <tr>
+        <td colspan="2" align="center">
+          <input type="checkbox" onchange="check(this)" id="FeedBabiesCheck" > Feed Babies Enabled
+        </td>
+      </tr>
       <tr>
         <td>Function Hotkey:</td>
         <td><input type="text" id="FeedBabiesHotkey" ></td>
@@ -974,7 +1188,6 @@ div#Splashdiv {
 
 <tr class="dropdownline" id="FishingDropDown" >
   <td>
-    <input type="checkbox" onchange="check(this)" id="FishingCheck" >
     <button type="button" onclick="buttonpress(this)" class="dropdownbutton" id="Fishing"> <img id="FishingArrow" src="Captures\Arrow0.png"> Fishing</button>
   </td>
 </tr>
@@ -982,6 +1195,11 @@ div#Splashdiv {
 <tr id="FishingContent" class="content">
   <td colspan="10"> 
     <table class="tablecontent">
+      <tr>
+        <td colspan="2" align="center">
+          <input type="checkbox" onchange="check(this)" id="FishingCheck" > Fishing Enabled
+        </td>
+      </tr>
       <tr>
         <td>Function Hotkey:</td>
         <td><input type="text" id="FishingHotkey" ></td>
@@ -1013,7 +1231,7 @@ div#Splashdiv {
 
 <tr class="dropdownline" id="GachaFarmingDropDown" >
   <td>
-    <input type="checkbox" onchange="check(this)" id="GachaFarmingCheck" >
+    
     <button type="button" onclick="buttonpress(this)" class="dropdownbutton" id="GachaFarming"> <img id="GachaFarmingArrow" src="Captures\Arrow0.png"> Gacha Farming</button>
   </td>
 </tr>
@@ -1021,6 +1239,11 @@ div#Splashdiv {
 <tr id="GachaFarmingContent" class="content">
   <td colspan="10"> 
     <table class="tablecontent">
+      <tr>
+        <td colspan="2" align="center">
+          <input type="checkbox" onchange="check(this)" id="GachaFarmingCheck" > Gacha Farming Enabled
+        </td>
+      </tr>
       <tr>
         <td>Function Hotkey:</td>
         <td><input type="text" id="GachaFarmingHotkey" ></td>
@@ -1087,7 +1310,7 @@ div#Splashdiv {
 
 <tr class="dropdownline" id="QuickTransferDropDown" >
   <td>
-    <input type="checkbox" onchange="check(this)" id="QTCheck" >
+    
     <button type="button" onclick="buttonpress(this)" class="dropdownbutton" id="QT"> <img id="QTArrow" src="Captures\Arrow0.png"> Quick Transfer</button>
   </td>
 </tr>
@@ -1095,6 +1318,11 @@ div#Splashdiv {
 <tr id="QTContent" class="content">
   <td colspan="10"> 
     <table class="tablecontent">
+      <tr>
+        <td colspan="2" align="center">
+          <input type="checkbox" onchange="check(this)" id="QTCheck" > Quick Transfer Enabled
+        </td>
+      </tr>
       <tr>
         <td>Function Hotkey:</td>
         <td><input type="text" id="QTHotkey" ></td>
@@ -1191,7 +1419,6 @@ div#Splashdiv {
 
 <tr class="dropdownline" id="ServerInfoDropDown" >
   <td>
-    <input type="checkbox" onchange="check(this)" id="ServerInfoMainCheck" >
     <button type="button" onclick="buttonpress(this)" class="dropdownbutton" id="ServerInfo"> <img id="ServerInfoArrow" src="Captures\Arrow0.png"> Server Info</button>
   </td>
 </tr>
@@ -1211,12 +1438,13 @@ div#Splashdiv {
               <button type="button" onclick="buttonpress(this)" class="dropdownbutton" id="OfficialRates"> <img id="OfficialRatesArrow" src="Captures\Arrow0.png"></button> 
               <b>Official Rates</b>
             </div>
+          </div>
         </td>
       </tr>
     </table>
 
 
-    <table class="tablecontent" id="OfficialRatesContent">
+    <table class="collapseablecontent" id="OfficialRatesContent">
     </table>
 
 
@@ -1238,11 +1466,12 @@ div#Splashdiv {
               <button type="button" onclick="buttonpress(this)" class="dropdownbutton" id="FavoriteServers"> <img id="FavoriteServersArrow" src="Captures\Arrow0.png"></button> 
               <b>Favorite Servers</b>
             </div>
+          </div>
         </td>
       </tr>
     </table>
 
-    <table class="tablecontent" id="NoFavoriteServersContent">
+    <table class="collapseablecontent" id="NoFavoriteServersContent">
       <tr>
         <td colspan="2">No Servers Added</td>
       </tr>
@@ -1251,7 +1480,7 @@ div#Splashdiv {
       </tr>
     </table>
 
-    <table class="tablecontent" id="FavoriteServersContent">
+    <table class="collapseablecontent" id="FavoriteServersContent">
     </table>
 
     <table class="tablecontent">
@@ -1272,6 +1501,7 @@ div#Splashdiv {
                 <button type="button" onclick="buttonpress(this)" class="dropdownbutton" id="ServerLookup"> <img id="ServerLookupArrow" src="Captures\Arrow0.png"></button>
                 <b>Server Lookup</b>
             </div>
+          </div>
         </td>
       </tr>
       <tr>
@@ -1291,7 +1521,7 @@ div#Splashdiv {
       </tr>
     </table>
 
-    <table class="tablecontent" id="ServerLookupContent">
+    <table class="collapseablecontent" id="ServerLookupContent">
     </table>
 
   </td>
@@ -1332,10 +1562,6 @@ div#Splashdiv {
 
 BrowserInfo();
 
-var img0 = 'Captures\\Arrow0.png';
-var img1 = 'Captures\\Arrow1.png';
-
-
 function check(id){
   window.location.href = 'myapp://' + id.id + '?checked=' + id.checked;
 }
@@ -1346,14 +1572,14 @@ function buttonpress(id){
   if (content != null){
     if (content.style.display === "block") {
         content.style.display = "none";
-        img.src = img0;
+        img.src = 'Captures\\Arrow0.png';
         if (id.id === "FavoriteServers")
-          document.getElementById('NoFavoriteServersContent').style.display = "none"
+          document.getElementById('NoFavoriteServersContent').style.display = "none";
       } else {
         content.style.display = "block";
-        img.src = img1;
+        img.src = 'Captures\\Arrow1.png';
         if (id.id === "FavoriteServers")
-          document.getElementById('NoFavoriteServersContent').style.display = "block"
+          document.getElementById('NoFavoriteServersContent').style.display = "block";
       }
   }
 
