@@ -24,11 +24,24 @@ body{
   font-size: 16px;
 }
 
+table, td, tr {
+  padding: 4px;
+  margin: 0px 0px;
+  border: none;
+  border-collapse: collapse;
+  color: white;
+  text-align: left;
+}
+
 .dropdownline {
   background-image: -ms-linear-gradient(top, #111111, #333333);
   border: none;
   border-collapse: collapse;
-  padding: 6px;
+  padding: 6px 0px;
+}
+
+tr.dropdownline td{
+  background-color: transparent;
 }
 
 .dropdownbutton {
@@ -36,7 +49,6 @@ body{
   color: white;
   cursor: pointer;
   border: none;
-  text-align: left;
   font-size: 18px;
   font-weight: bold;
 }
@@ -47,27 +59,38 @@ tr.content {
   background-color: #333333;
 }
 
-tr.content td {
-  width: 48%;
-}
-
-table, td, tr {
-  padding: 4px;
-  margin: 0px 0px;
-  border: none;
-  border-collapse: collapse;
-  color: white;
-}
 
 .tablecontent {
-  width: 95%;
+  text-align: center;
+  padding: 4px;
+  margin: 0px 0px;
+  width:100%;
 }
 
-.collapseablecontent {
-  width: 95%;
+.collapsiblecontent {
+  text-align: center;
   display: none;
+  padding: 4px;
+  margin: 0px 0px;
 }
 
+.innerCheck {
+  text-align: center;
+}
+
+.submitCellSingle{
+  text-align: right;
+}
+
+.submitCellDouble{
+  text-align: center;
+}
+
+.ServerImageButton {
+  background-color: Transparent;
+  border: none;
+  outline:none;
+}
 
 input, select {
   background-color: #111111;
@@ -75,14 +98,17 @@ input, select {
   font-size: 16px;
 }
 
+input[type=text], input[type=number], input[type=range], .SelectDropdown {
+  width:100%;
+  box-sizing: border-box;
+}
+
+
 input[type=button]  {
   font-weight: bold;
   font-size: 18px;
 }
 
-input[type=text], input[type=number]  {
-  width: 100%;
-}
 
 input[type=text]:disabled, input[type=number]:disabled, input[type=button]:disabled  {
   color: #888888;
@@ -95,13 +121,8 @@ input[type=range] {
   background: transparent;
   border: 0;
   padding: 0 0;
-  opacity: 0.7;
   -webkit-transition: .2s;
   transition: opacity .2s;
-}
-
-input[type=range]:hover {
-  opacity: 1;
 }
 
 
@@ -118,7 +139,6 @@ input[type=range]::-ms-thumb {
 input[type=range]::-ms-track {
   color: transparent;
   border: 1px solid #000000;
-  width: 100%;
   height: 6px;
   cursor: pointer;
 
@@ -162,10 +182,16 @@ input[type=range]::-ms-fill-lower {
   background: #333399;
 }
 
+button.regularbutton{
+  display: inline-block;
+  white-space: normal;
+  word-wrap: break-word;
+  cursor: pointer;
+  background-color: #000000;
+}
 
 input.ExportBtn{
   display: inline-block;
-  width: 75px;
   white-space: normal;
   word-wrap: break-word;
   cursor: pointer;
@@ -215,7 +241,6 @@ div#Splashdiv {
 <table id="MainTable">
 
 <tr id="ValidationInfo" >
-
 </tr>
 
 
@@ -223,7 +248,6 @@ div#Splashdiv {
 
 <tr class="dropdownline" id="AlertsDropDown" >
   <td>
-    
     <button type="button" onclick="buttonpress(this)" class="dropdownbutton" id="Alerts"> <img id="AlertsArrow" src="Captures\Arrow0.png"> Alerts</button>
   </td>
 </tr>
@@ -247,13 +271,13 @@ div#Splashdiv {
       </tr>
     </table>
 
-    <table class="collapseablecontent" id="ActualAlertsContent">
+    <table class="collapsiblecontent" id="ActualAlertsContent">
       <tr>
         <td colspan="2" style="border-top:solid 2px"></td>
       </tr>
       <tr>
-        <td>Repeat Delay(s):</td>
-        <td><input type="number" id="AlertsDelay" ></td>
+        <td>Repeat Delay:</td>
+        <td><input type="number" class="number" id="AlertsDelay" ></td>
       </tr>
       <tr>
         <td nowrap>
@@ -285,60 +309,11 @@ div#Splashdiv {
         </td>
       </tr>
       <tr>
-        <td colspan="2" align="right">
+        <td colspan="2" class="submitCellSingle">
           <input type="button" value="Update Alerts" onclick="goto(this)" id="UpdateAlerts">
         </td>
       </tr>
     </table>
-<!--LastAlert--> 
-<!--
-      <tr>
-        <td colspan="2" style="border-top:solid 2px"></td>
-      </tr>
-
-      <tr>
-        <td colspan="2" style="border-top:solid 2px"></td>
-      </tr>
-
-
-      <tr>
-        <td>Alert Title:</td>
-        <td><input type="text" id="AlertTitle1" value="Imprints"></td>
-      </tr>
-
-      <tr>
-        <td>Time Remaining:</td>
-        <td>
-          <input type="text" value="8 hours 30 min" id="TimeRemaining1" >
-        </td>
-      </tr>
-
-      <tr>
-        <td align="center" colspan="2">
-          <input type="button" onclick="buttonpress(this)" value="Stop Timer" >
-
-          <input type="button" onclick="buttonpress(this)" value="Update Timer" >
-        </td>
-      </tr>
-      
-
-
-      <tr>
-        <td colspan="2" style="border-top:solid 2px"></td>
-      </tr>
-
-      
-
-      <tr>
-        <td align="right" colspan="2">
-          <input type="button" onclick="buttonpress(this)" value="Add Alert Slot" >
-        </td>
-      </tr>
-
---> 
-
-
-
 
 
     <table class="tablecontent">
@@ -360,40 +335,47 @@ div#Splashdiv {
       </tr>
     </table>
 
-    <table class="collapseablecontent" id="CDContent">
+    <table class="collapsiblecontent" id="CDContent">
       <tr>
-        <td colspan="2">
+        <td colspan="2" style="border-top:solid 2px"></td>
+      </tr>
+      <tr>
+        <td colspan="2" style="text-align:center;">
           <input type="checkbox" id="CDScreenDisp" >
           Display on Screen
         </td>
       </tr>
       <tr>
         <td>Position X:</td>
-        <td><input type="number" id="CDX" ></td>
+        <td><input type="number" class="number" id="CDX" ></td>
       </tr>
       <tr>
         <td>Position Y:</td>
-        <td><input type="number" id="CDY" ></td>
+        <td><input type="number" class="number" id="CDY" ></td>
       </tr>
       <tr>
         <td>Text Size:</td>
-        <td><input type="number" id="CDSize" ></td>
+        <td><input type="number" class="number" id="CDSize" ></td>
       </tr>
 
 
+      <tr>
+        <td colspan="2" style="border-top:solid 2px"></td>
+      </tr>
+
 
       <tr>
-        <td align="left" colspan="2">
-          <table>
+        <td colspan="2">
+          <table align="center">
             <tr>
-              <td>
+              <td nowrap>
                 <input type="radio" id="CDToggle0" name="CDToggle" value="0" onclick="goto(this)" > Notify
               </td>
-
-              <td>
+              <td></td>
+              <td nowrap>
                 <input type="radio" id="CDToggle2" name="CDToggle" value="2" onclick="goto(this)" > Food Countdown
               </td>
-
+              <td></td>
               <td nowrap>
                 <input type="radio" id="CDToggle1" name="CDToggle" value="1" onclick="goto(this)" > Close Ark
               </td>
@@ -408,53 +390,145 @@ div#Splashdiv {
 
 
       <tr class="alertnotify" id="alertnotify1">
-        <td>Time:</td><td><input type="text" id="CDTimeDisp" ></td>
+        <td>Time:</td><td><input type="text" class="text" id="CDTimeDisp" ></td>
       </tr>
 <!-- --------------------------------------------------------------------------------------------------------- -->
 
       <tr class="alertnotify" id="alertnotify2">
-        <td>Notify Message:</td><td><input type="text" id="CDNotify" ></td>
+        <td>Notify Message:</td><td><input type="text" class="text" id="CDNotify" ></td>
       </tr>
 
       <tr class="alertnotify" id="alertnotify3">
-        <td>Reset Timer Key:</td><td><input type="text" id="CDResetKey" ></td>
+        <td>Reset Timer Key:</td><td><input type="text" class="text" id="CDResetKey" ></td>
       </tr>
       <tr class="alertnotify" id="alertnotify4">
-        <td>Key Presses Reset:</td><td><input type="text" id="CDResetNumber" ></td>
+        <td>Key Presses Reset:</td><td><input type="text" class="text" id="CDResetNumber" ></td>
       </tr>
 
 <!-- --------------------------------------------------------------------------------------------------------- -->
 
 
       <tr class="alertnotify" id="alertnotify5">
-        <td>Food Message:</td><td><input type="text" id="CDFoodNotify" ></td>
+        <td>Food Message:</td><td><input type="text" class="text" id="CDFoodNotify" ></td>
       </tr>
 
 
       <tr class="alertnotify" id="alertnotify6">
-        <td>Current Food:</td><td><input type="number" id="CDFood" ></td>
+        <td>Current Food:</td><td><input type="number" class="number" id="CDFood" ></td>
       </tr>
 
       <tr class="alertnotify" id="alertnotify7">
-        <td>Food Rate (f/s):</td><td><input type="number" id="CDFoodRate" ></td>
+        <td>Food Rate (f/s):</td><td><input type="number" class="number" id="CDFoodRate" ></td>
       </tr>
 
       <tr class="alertnotify" id="alertnotify8">
-        <td>Remaining Food:</td><td><input type="number" id="CDFoodRem" disabled ></td>
+        <td>Remaining Food:</td><td><input type="number" class="number" id="CDFoodRem" disabled ></td>
       </tr>
 
       <tr class="alertnotify" id="alertnotify9">
-        <td>Remaining Time:</td><td><input type="number" id="CDRemTime" disabled ></td>
+        <td>Remaining Time:</td><td><input type="number" class="number" id="CDRemTime" disabled ></td>
       </tr>
 
 <!-- --------------------------------------------------------------------------------------------------------- -->
 
       <tr>
-        <td colspan="2" align="right">
+        <td colspan="2" class="submitCellSingle">
           <input type="button" onclick="goto(this)" id="UpdateCountdown" value="Update Countdown" >
         </td>
       </tr>
     </table>
+
+
+
+
+
+
+
+    <table class="tablecontent">
+      <tr>
+        <td colspan="2" style="border-top:solid 4px"></td>
+      </tr>
+      <tr>
+        <td colspan="2"  style="text-align:left;">
+          <div style="white-space: nowrap;">
+            <div style="min-width: 45px; display: inline-block; white-space: nowrap; text-align: right;">
+
+            </div>
+            <div style="display: inline-block;">
+              <button type="button" onclick="buttonpress(this)" class="dropdownbutton" id="TimedAlerts"> <img id="TimedAlertsArrow" src="Captures\Arrow0.png"></button> 
+              <b>Timed Alerts</b>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </table>
+
+    <table class="collapsiblecontent" id="TimedAlertsContent">
+      <tr>
+        <td colspan="2" style="border-top:solid 2px"></td>
+      </tr>
+
+      <tr>
+        <td colspan="2" style="text-align:center;">
+          <input type="checkbox" id="TAScreenDisp" >
+          Display on Screen
+        </td>
+      </tr>
+      <tr>
+        <td>Position X:</td>
+        <td><input type="number" class="number" id="TAX" ></td>
+      </tr>
+      <tr>
+        <td>Position Y:</td>
+        <td><input type="number" class="number" id="TAY" ></td>
+      </tr>
+      <tr>
+        <td>Text Size:</td>
+        <td><input type="number" class="number" id="TASize" ></td>
+      </tr>
+
+      <tr>
+        <td colspan="2" class="submitCellSingle">
+          <input type="button" onclick="buttonpress(this)" value="Update Screen" id="UpdateTAScreen">
+        </td>
+      </tr>
+
+      <tr>
+        <td colspan="2" style="border-top:solid 2px"></td>
+      </tr>
+
+      <tr>
+        <td align="left">Alert Title:</td>
+        <td><input type="text" class="text" id="TimedAlertsTitle" value="Imprints"></td>
+      </tr>
+
+      <tr>
+        <td align="left">Time Remaining:</td>
+        <td>
+          <input type="text" class="text" value="8 hours" id="TimedAlertsRemaining" >
+        </td>
+      </tr>
+
+      <tr>
+        <td colspan="2" class="submitCellSingle">
+          <input type="button" onclick="buttonpress(this)" value="Add Timed Alert" id="AddTimedAlert">
+        </td>
+      </tr>
+
+      <tr>
+        <td colspan="2" style="border-top:solid 4px"></td>
+      </tr>
+
+      <tr>
+        <td colspan="2">
+          <table class="tablecontent" id="TimedAlertsHTML">
+          </table>
+        </td>
+      </tr>
+    </table>
+
+
+
 
     <table class="tablecontent">
       <tr>
@@ -464,37 +538,61 @@ div#Splashdiv {
         <td colspan="2" align="left">
           <div style="white-space: nowrap;">
             <div style="min-width: 45px; display: inline-block; white-space: nowrap; text-align: right;">
-              <input type="checkbox" onchange="check(this)" id="AlertAltCheck" >
+              
             </div>
             <div style="display: inline-block;">
               <button type="button" onclick="buttonpress(this)" class="dropdownbutton" id="AlertAlt"> <img id="AlertAltArrow" src="Captures\Arrow0.png"></button> 
-              <b>Use Alternate Sound Device</b>
+              <b>Alert Sound Options</b>
             </div>
           </div>
         </td>
       </tr>
     </table>
 
-    <table class="collapseablecontent" id="AlertAltContent">
+    <table class="collapsiblecontent" id="AlertAltContent">
       <tr>
         <td colspan="2" style="border-top:solid 2px"></td>
       </tr>
 
       <tr>
-        <td>Default Sound Device:</td>
-        <td id="DefaultSoundDevicesList"></td>
-      </tr>
-
-      <tr>
-        <td>Alert Sound Device:</td>
-        <td id="OutputSoundDevicesList"></td>
-      </tr>
-
-      <tr>
-        <td>
-          <input type="button" value="Test Output" onclick="goto(this)" id="TestSound" >
+        <td colspan="2">
+          <input type="checkbox" id="AlertAltCheck" > Use Alternate Sound Device
         </td>
-        <td align="right">
+      </tr>
+
+      <tr>
+        <td>Default Sound Device:</td>
+        <td>
+          <select id="DefaultSoundSelect" class="SelectDropdown">
+          </select>
+        </td>
+      </tr>
+
+      <tr>
+        <td>Alternate Sound Device:</td>
+        <td>
+          <select id="OutputSoundSelect" class="SelectDropdown">
+          </select>
+        </td>
+      </tr>
+
+      <tr>
+        <td colspan="2" style="border-top:solid 2px"></td>
+      </tr>
+
+      <tr>
+        <td>Narrator:</td>
+        <td>
+          <select id="oVoiceSelect" class="SelectDropdown">
+          </select>
+        </td>
+      </tr>
+
+
+
+      <tr>
+        <td colspan="2" class="submitCellDouble">
+          <input type="button" value="Test Output" onclick="goto(this)" id="TestSound" >
           <input type="button" onclick="goto(this)" id="UpdateSoundDevices" value="Update Output" >
         </td>
       </tr>
@@ -512,22 +610,22 @@ div#Splashdiv {
 </tr>
 
 <tr id="AutoClickContent" class="content">
-  <td colspan="10"> 
+  <td colspan="10" > 
     	<table class="tablecontent">
         <tr>
-          <td colspan="2" align="center">
+          <td colspan="2" class="innerCheck">
             <input type="checkbox" onchange="check(this)" id="AutoClickCheck" > Auto Click Enabled
           </td>
         </tr>
         <tr>
-          <td>Function Hotkey:</td>
-          <td><input type="text" id="AutoClickHotkey"  ></td>
+          <td style="width:50%;">Function Hotkey:</td>
+          <td><input type="text" class="text" id="AutoClickHotkey"  ></td>
         </tr>
 
         <tr>
           <td>Auto Click Preset:</td>
           <td>
-          <select id="AutoClickPresetNumber" onchange="window.location.href='myapp://AutoClickPreset/'+this.value;" style="width:104%;">
+          <select id="AutoClickPresetNumber" onchange="window.location.href='myapp://AutoClickPreset/'+this.value;" class="SelectDropdown">
             <!--Start AutoClickPreset-->
             <option value='1'>One</option>
             <option value='2'>Two</option>
@@ -538,7 +636,7 @@ div#Splashdiv {
         </tr>
         <tr>
           <td>Preset Name:</td>
-          <td><input type="text" id="AutoClickPresetStr" ></td>
+          <td><input type="text" class="text" id="AutoClickPresetStr" ></td>
         </tr>
         <tr>
           <td align="center">
@@ -550,15 +648,15 @@ div#Splashdiv {
         </tr>
         <tr>
           <td>Spam Key:</td>
-          <td><input type="text" id="AutoClickKey" ></td>
+          <td><input type="text" class="text" id="AutoClickKey" ></td>
         </tr>
         <tr>
           <td>Spam Delay(ms):</td>
-          <td><input type="number" id="AutoClickSpamDelay" ></td>
+          <td><input type="number" class="number" id="AutoClickSpamDelay" ></td>
         </tr>
         <tr>
           <td>Hold Delay(ms):</td>
-          <td><input type="number" id="AutoClickHoldDelay" ></td>
+          <td><input type="number" class="number" id="AutoClickHoldDelay" ></td>
         </tr>
 
         <tr>
@@ -568,10 +666,8 @@ div#Splashdiv {
         </tr>
 
         <tr>
-          <td>
+          <td colspan="2" class="submitCellDouble">
             <input type="button" onclick="window.location.href='myapp://AutoClickPreset/'+this.id;" value="Remove Preset" id="AutoClickRemovePreset">
-          </td>
-          <td colspan="2" align="center">
             <input type="button" onclick="goto(this)" id="UpdateAutoClick" value="Update" >
           </td>
         </tr>
@@ -596,12 +692,12 @@ div#Splashdiv {
   <td colspan="10">
     <table class="tablecontent">
       <tr>
-        <td colspan="2" align="center">
+        <td colspan="2" class="innerCheck">
           <input type="checkbox" onchange="check(this)" id="AutoFoodWaterCheck" > Auto Food Water Enabled
         </td>
       </tr>
       <tr>
-        <td nowrap>Food Key: 
+        <td style="width:50%;" nowrap>Food Key: 
           <select id="FoodKey">
             <option value="1">1</option>
             <option value="2">2</option>
@@ -633,13 +729,13 @@ div#Splashdiv {
       <tr>
         <td>Food Time:</td>
         <td>
-          <input type="number" id="FoodDelay" >
+          <input type="number" class="number" id="FoodDelay" >
         </td>
       </tr>
       <tr>
         <td>Water Time:</td>
         <td>
-          <input type="number" id="WaterDelay" >
+          <input type="number" class="number" id="WaterDelay" >
         </td>
       </tr>
 
@@ -648,7 +744,7 @@ div#Splashdiv {
           Food Time Remaining:
         </td>
         <td>
-          <input type="text" value="countdown" id="FoodTimer" disabled>
+          <input type="text" class="text" value="countdown" id="FoodTimer" disabled>
         </td>
       </tr>
 
@@ -657,7 +753,7 @@ div#Splashdiv {
           Water Time Remaining:
         </td>
         <td>
-          <input type="text" value="countdown" id="WaterTimer" disabled>
+          <input type="text" class="text" value="countdown" id="WaterTimer" disabled>
         </td>
       </tr>
 
@@ -668,14 +764,8 @@ div#Splashdiv {
       </tr>
 
       <tr>
-        <td align="center">
+        <td colspan="2" class="submitCellDouble">
           <input type="button" onclick="goto(this)" id="ResetTimersFW" value="Reset Timers" >
-
-          <!--
-          <input type="button" onclick="goto(this)" id="DefaultTimersFW" value="Default Timers" >
-          -->
-        </td>
-        <td align="center">
           <input type="button" onclick="goto(this)" id="UpdateAutoFoodWater" value="Update">
         </td>
       </tr>
@@ -694,11 +784,10 @@ div#Splashdiv {
   </td>
 </tr>
 
+
 <tr id="ConsoleVariablesContent" class="content">
-  <td>
+  <td colspan="10">
     <table class="tablecontent">
-
-
       <tr>
         <td colspan="2">
           <input type="checkbox" id="ConsoleVariables1" > Hide Foliage<br>(foliage.UseOcclusionType)
@@ -729,9 +818,19 @@ div#Splashdiv {
         </td>
       </tr>
 
+       <tr>
+        <td>
+          Max CPU Particles<br>Per Emitter
+        </td>
+        <td >
+          <input type="number" id="ConsoleVariables6" value="20">
+        </td>
+      </tr>
+
+
 
       <tr>
-        <td colspan="2" align="center">
+        <td colspan="2" nowrap class="submitCellDouble">
           <input type="button" value="Show ini" onclick="goto(this)" id="RunConsoleVariables">
           <input type="button" value="Update ini" onclick="goto(this)" id="UpdateConsoleVariables">
         </td>
@@ -748,57 +847,57 @@ div#Splashdiv {
 </tr>
 
 <tr id="CrosshairContent" class="content">
-  <td>
+  <td colspan="10">
     <table class="tablecontent">
-    <tr>
-      <td colspan="2" align="center">
-        <input type="checkbox" onchange="check(this)" id="CrosshairCheck" > Crosshair Enabled
-      </td>
-    </tr>
-    <tr>
-      <td>Diameter:<br>(Pixels)</td>
-      <td>
-        <input type="range" class="range" min="0" max="100" id="XhairD" >
-      </td>
-    </tr>
-    <tr>
-      <td>Alpha:</td>
-      <td>
-        <input type="range" class="range" min="0" max="255" id="XhairA" >
-      </td>
-    </tr>
-    <tr>
-      <td>Red:</td>
-      <td>
-        <input type="range" class="range" min="0" max="255" id="XhairR" >
-      </td>
-    </tr>
-    <tr>
-      <td>Green:</td>
-      <td>
-        <input type="range" class="range" min="0" max="255" id="XhairG" >
-      </td>
-    </tr>
-    <tr>
-      <td>Blue:</td>
-      <td>
-        <input type="range" class="range" min="0" max="255" id="XhairB" >
-      </td>
-    </tr>
-    <tr>
-      <td>Offset X:</td>
-      <td><input type="number" id="XhairOffsetX" ></td>
-    </tr>
-    <tr>
-      <td>Offset Y:</td>
-      <td><input type="number" id="XhairOffsetY" ></td>
-    </tr>
-    <tr>
-      <td colspan="2" align="right">
-        <input type="button" value="Update" onclick="goto(this)" id="UpdateCrosshair">
-      </td>
-    </tr>
-  </table>
+      <tr>
+        <td colspan="2" class="innerCheck">
+          <input type="checkbox" onchange="check(this)" id="CrosshairCheck" > Crosshair Enabled
+        </td>
+      </tr>
+      <tr>
+        <td style="width:25%;">Diameter:<br>(Pixels)</td>
+        <td>
+          <input type="range" class="range" min="0" max="100" id="XhairD" >
+        </td>
+      </tr>
+      <tr>
+        <td>Alpha:</td>
+        <td>
+          <input type="range" class="range" min="0" max="255" id="XhairA" >
+        </td>
+      </tr>
+      <tr>
+        <td>Red:</td>
+        <td>
+          <input type="range" class="range" min="0" max="255" id="XhairR" >
+        </td>
+      </tr>
+      <tr>
+        <td>Green:</td>
+        <td>
+          <input type="range" class="range" min="0" max="255" id="XhairG" >
+        </td>
+      </tr>
+      <tr>
+        <td>Blue:</td>
+        <td>
+          <input type="range" class="range" min="0" max="255" id="XhairB" >
+        </td>
+      </tr>
+      <tr>
+        <td>Offset X:</td>
+        <td><input type="number" class="number" id="XhairOffsetX" ></td>
+      </tr>
+      <tr>
+        <td>Offset Y:</td>
+        <td><input type="number" class="number" id="XhairOffsetY" ></td>
+      </tr>
+      <tr>
+        <td colspan="2" class="submitCellSingle">
+          <input type="button" value="Update" onclick="goto(this)" id="UpdateCrosshair">
+        </td>
+      </tr>
+    </table>
   </td>
 </tr>
 
@@ -835,30 +934,28 @@ div#Splashdiv {
             </div>
           </div>
         </td>
-      </tr>
+      </tr>      
     </table>
 
 
 
 
-    <table class="collapseablecontent" id="AutoDinoExportContent">
+    <table class="collapsiblecontent" id="AutoDinoExportContent">
       <tr>
         <td colspan="2" align="left">
-          <table class="collapseablecontent" id="DinoExportTable">
+          <table class="collapsiblecontent" id="DinoExportTable">
           </table>
-
-
 
           <table class="tablecontent">
             <tr>
-              <td colspan="2" align="center" nowrap>
+              <td colspan="2" style="border-top:solid 2px"></td>
+            </tr>
+            <tr>
+              <td colspan="2" class="submitCellDouble">
                 <input type="button" onclick="goto(this)" id="TotalExports" value="Clean Exports" class="ExportBtn">
                 <input type="button" onclick="goto(this)" id="LastExport" value="Last Export" class="ExportBtn">
               </td>
             </tr>
-          </table>
-
-          <table class="tablecontent">
             <tr>
               <td colspan="2" align="left">
                 <div style="white-space: nowrap;">
@@ -874,12 +971,31 @@ div#Splashdiv {
             </tr>
           </table>
 
-          <table class="collapseablecontent" id="DinoExportSettingsContent">
+          <table class="collapsiblecontent" id="DinoExportSettingsContent">
+            <tr>
+              <td colspan="2" style="border-top:solid 2px"></td>
+            </tr>
+
+            <tr>
+              <td colspan="2">
+                <table>
+                  <tr>
+                    <td style="width:75%;">
+                      <input type="checkbox" onchange="check(this)" id="DebugBaby" > Debug Baby Age (0-100):
+                    </td>
+                    <td>
+                      <input type="number" class="number" id="DebugBabyAge">
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
             <tr>
               <td colspan="2" style="border-top:solid 2px"></td>
             </tr>
             <tr>
-              <td colspan="2">
+              <td colspan="2" style="text-align:center;">
                 <table>
                   <tr>
                     <td style="width:33%; text-align:center" nowrap>
@@ -897,9 +1013,9 @@ div#Splashdiv {
             </tr>
 
             <tr>
-              <td style="width:50%;" nowrap>Overlay Time(s):</td>
-              <td style="width:50%;" nowrap>
-                <input type="number" id="ASBtime">
+              <td style="width:33%;">Overlay Time(s):</td>
+              <td style="width:66%;">
+                <input type="number" class="number" id="ASBtime">
               </td>
             </tr>
 
@@ -981,32 +1097,14 @@ div#Splashdiv {
               <td>
                 <input type="checkbox" id="ASBgreyscale" onchange="window.location.href='myapp://rangerelease/'+this.id;"> Grey Scale
               </td>
-              <td align="right">
+              <td class="submitCellSingle">
                 <input type="button" value="Update Settings" onclick="goto(this)" id="UpdateASBsnip" >
               </td>
             </tr>
           </table>
-
-
         </td>
       </tr>
-
     </table>
-
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
 
 
     <table class="tablecontent">
@@ -1058,53 +1156,53 @@ div#Splashdiv {
     </table>
 
 
-    <table class="collapseablecontent" id="CaptureHelenaContent">
+    <table class="collapsiblecontent" id="CaptureHelenaContent">
       <tr>
         <td style="width:50%;" nowrap>Overlay Time(s):</td>
         <td style="width:50%;" nowrap>
-          <input type="number" id="HelenaTime">
+          <input type="number" class="number" id="HelenaTime">
         </td>
       </tr>
 
       <tr>
         <td style="width:50%;" nowrap>Offset X:</td>
         <td style="width:50%;" nowrap>
-          <input type="number" id="HelenaXoff">
+          <input type="number" class="number" id="HelenaXoff">
         </td>
       </tr>
 
       <tr>
         <td style="width:50%;" nowrap>Offset Y:</td>
         <td style="width:50%;" nowrap>
-          <input type="number" id="HelenaYoff">
+          <input type="number" class="number" id="HelenaYoff">
         </td>
       </tr>
 
       <tr>
         <td style="width:50%;" nowrap>Window X:</td>
         <td style="width:50%;" nowrap>
-          <input type="number" id="HelenaX">
+          <input type="number" class="number" id="HelenaX">
         </td>
       </tr>
 
       <tr>
         <td style="width:50%;" nowrap>Window Y:</td>
         <td style="width:50%;" nowrap>
-          <input type="number" id="HelenaY">
+          <input type="number" class="number" id="HelenaY">
         </td>
       </tr>
 
       <tr>
         <td style="width:50%;" nowrap>Window W:</td>
         <td style="width:50%;" nowrap>
-          <input type="number" id="HelenaW">
+          <input type="number" class="number" id="HelenaW">
         </td>
       </tr>
 
       <tr>
         <td style="width:50%;" nowrap>Window H:</td>
         <td style="width:50%;" nowrap>
-          <input type="number" id="HelenaH">
+          <input type="number" class="number" id="HelenaH">
         </td>
       </tr>
 
@@ -1117,16 +1215,11 @@ div#Splashdiv {
       </tr>
 
       <tr>
-        <td colspan="2" align="right">
+        <td colspan="2" class="submitCellSingle">
           <input type="button" onclick="goto(this)" id="UpdateHelena" value="Update Helena">
         </td>
       </tr>
-
-      <tr>
-        <td colspan="2" style="border-top:solid 4px"></td>
-      </tr>
     </table>
-
   </td>
 </tr>
 
@@ -1143,17 +1236,17 @@ div#Splashdiv {
   <td colspan="10"> 
     <table class="tablecontent">
       <tr>
-        <td colspan="2" align="center">
+        <td colspan="2" class="innerCheck">
           <input type="checkbox" onchange="check(this)" id="FeedBabiesCheck" > Feed Babies Enabled
         </td>
       </tr>
       <tr>
-        <td>Function Hotkey:</td>
-        <td><input type="text" id="FeedBabiesHotkey" ></td>
+        <td style="width:50%;">Function Hotkey:</td>
+        <td><input type="text" class="text" id="FeedBabiesHotkey" ></td>
       </tr>
       <tr>
         <td>Spin Time(ms):</td>
-        <td><input type="number" id="SpinPixels" ></td>
+        <td><input type="number" class="number" id="SpinPixels" ></td>
       </tr>
       <tr>
         <td>Spin Direction:</td>
@@ -1163,7 +1256,7 @@ div#Splashdiv {
         </td>
       </tr>
       <tr>
-        <td>Current Task:</td><td><input type="text" id="FeedBabiesDebugInfo" disabled value="Waiting..."></td>
+        <td>Current Task:</td><td><input type="text" class="text" id="FeedBabiesDebugInfo" disabled value="Waiting..."></td>
       </tr>
       <tr>
         <td colspan="2">
@@ -1172,7 +1265,7 @@ div#Splashdiv {
               <td style="width:75%;">
                 <input type="checkbox" id="FeedBabiesDebugCheck" > Show Tasks as Overlay
               </td>
-              <td align="right">
+              <td class="submitCellSingle">
                 <input type="button" value="Update" onclick="goto(this)" id="UpdateFeedBabies" >
             </td>
             </tr>
@@ -1196,16 +1289,16 @@ div#Splashdiv {
   <td colspan="10"> 
     <table class="tablecontent">
       <tr>
-        <td colspan="2" align="center">
+        <td colspan="2" class="innerCheck">
           <input type="checkbox" onchange="check(this)" id="FishingCheck" > Fishing Enabled
         </td>
       </tr>
       <tr>
-        <td>Function Hotkey:</td>
-        <td><input type="text" id="FishingHotkey" ></td>
+        <td style="width:50%;">Function Hotkey:</td>
+        <td><input type="text" class="text" id="FishingHotkey" ></td>
       </tr>
       <tr>
-        <td>Current Task:</td><td><input type="text" id="FeedBabiesDebugInfo" disabled value="Waiting..."></td>
+        <td>Current Task:</td><td><input type="text" class="text" id="FeedBabiesDebugInfo" disabled value="Waiting..."></td>
       </tr>
       <tr>
         <td colspan="2">
@@ -1214,7 +1307,7 @@ div#Splashdiv {
               <td style="width:75%;">
                 <input type="checkbox" id="FishingDebugCheck" > Show Tasks as Overlay
               </td>
-              <td align="right">
+              <td class="submitCellSingle">
                 <input type="button" value="Update" onclick="goto(this)" id="UpdateFishing" >
             </td>
             </tr>
@@ -1240,13 +1333,13 @@ div#Splashdiv {
   <td colspan="10"> 
     <table class="tablecontent">
       <tr>
-        <td colspan="2" align="center">
+        <td colspan="2" class="innerCheck">
           <input type="checkbox" onchange="check(this)" id="GachaFarmingCheck" > Gacha Farming Enabled
         </td>
       </tr>
       <tr>
-        <td>Function Hotkey:</td>
-        <td><input type="text" id="GachaFarmingHotkey" ></td>
+        <td style="width:50%;">Function Hotkey:</td>
+        <td><input type="text" class="text" id="GachaFarmingHotkey" ></td>
       </tr>
       <tr>
         <td>
@@ -1287,7 +1380,7 @@ div#Splashdiv {
         </td>
       </tr>
       <tr>
-        <td>Current Task:</td><td><input type="text" id="GachaFarmingDebugInfo" disabled value="Waiting..."></td>
+        <td>Current Task:</td><td><input type="text" class="text" id="GachaFarmingDebugInfo" disabled value="Waiting..."></td>
       </tr>
       <tr>
         <td colspan="2">
@@ -1296,7 +1389,7 @@ div#Splashdiv {
               <td style="width:75%;">
                 <input type="checkbox" id="GachaFarmingDebugCheck" > Show Tasks as Overlay
               </td>
-              <td align="right">
+              <td class="submitCellSingle">
                 <input type="button" value="Update" onclick="goto(this)" id="UpdateGachaFarming" >
             </td>
             </tr>
@@ -1319,13 +1412,13 @@ div#Splashdiv {
   <td colspan="10"> 
     <table class="tablecontent">
       <tr>
-        <td colspan="2" align="center">
+        <td colspan="2" class="innerCheck">
           <input type="checkbox" onchange="check(this)" id="QTCheck" > Quick Transfer Enabled
         </td>
       </tr>
       <tr>
-        <td>Function Hotkey:</td>
-        <td><input type="text" id="QTHotkey" ></td>
+        <td style="width:50%;">Function Hotkey:</td>
+        <td><input type="text" class="text" id="QTHotkey" ></td>
       </tr>
 
       <tr>
@@ -1343,7 +1436,7 @@ div#Splashdiv {
 
       <tr>
         <td>Preset Name:</td>
-        <td><input type="text" id="QTPresetStr" ></td>
+        <td><input type="text" class="text" id="QTPresetStr" ></td>
       </tr>
 
 
@@ -1366,11 +1459,11 @@ div#Splashdiv {
       </tr>
       <tr>
         <td>Delay(ms):</td>
-        <td><input type="number" id="QTDelay" ></td>
+        <td><input type="number" class="number" id="QTDelay" ></td>
       </tr>
       <tr>
         <td>Search String(s):</td>
-        <td><input type="text" id="QTSearch" ></td>
+        <td><input type="text" class="text" id="QTSearch" ></td>
       </tr>
 
 
@@ -1389,26 +1482,17 @@ div#Splashdiv {
       </tr>
       <tr>
         <td>Auto Delay(s):</td>
-        <td><input type="number" id="AutoQTCapDelay" ></td>
+        <td><input type="number" class="number" id="AutoQTCapDelay" ></td>
       </tr>
 
 
 
 
       <tr>
-
-
-      <td>
-          <input type="button" onclick="window.location.href='myapp://QTPreset/'+this.id;" value="Remove Preset" id="QTRemovePreset">
-      </td>
-
-
-      <td align="right">
-        <input type="button" value="Update" onclick="goto(this)" id="UpdateQT">
-      </td>
-
-
-
+        <td colspan="2" class="submitCellDouble">
+            <input type="button" onclick="window.location.href='myapp://QTPreset/'+this.id;" value="Remove Preset" id="QTRemovePreset">
+            <input type="button" value="Update" onclick="goto(this)" id="UpdateQT">
+        </td>
       </tr>
     </table>
   </td>
@@ -1425,14 +1509,12 @@ div#Splashdiv {
 
 <tr id="ServerInfoContent" class="content">
   <td colspan="10"> 
-
-
     <table class="tablecontent">
       <tr>
         <td colspan="2" align="left">
           <div style="white-space: nowrap;">
             <div style="min-width: 45px; display: inline-block; white-space: nowrap; text-align: right;">
-              <input type="checkbox" onchange="check(this)" id="OfficialRatesCheck" >
+              
             </div>
             <div style="display: inline-block;">
               <button type="button" onclick="buttonpress(this)" class="dropdownbutton" id="OfficialRates"> <img id="OfficialRatesArrow" src="Captures\Arrow0.png"></button> 
@@ -1443,21 +1525,44 @@ div#Splashdiv {
       </tr>
     </table>
 
-
-    <table class="collapseablecontent" id="OfficialRatesContent">
-    </table>
-
-
-    <table class="tablecontent">
+    <table class="collapsiblecontent" id="OfficialRatesContent">
       <tr>
-        <td colspan="2" style="border-top:solid 2px"></td>
+        <td colspan="2" style="text-align:center;">
+          <div style="white-space: nowrap;">
+            <div style="min-width: 45px; display: inline-block; white-space: nowrap; text-align: right;">
+                <input type="checkbox" onchange="check(this)" id="OfficialRatesCheck" >
+            </div>
+            <div style="display: inline-block;">
+                <b>Refresh Official Rates</b>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>Refresh Interval:</td>
+        <td><input type="text" class="text" id="OfficialRatesRefresh" ></td>
+      </tr>
+      <tr>
+        <td colspan="2" class="submitCellSingle">
+          <input type="button" value="Update" onclick="goto(this)" id="UpdateOfficialRatesSettings">
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <table class="collapsiblecontent" id="OfficialRatesContentInner">
+          </table>
+        </td>
       </tr>
     </table>
 
 
+
     <table class="tablecontent">
       <tr>
-        <td colspan="2" align="left">
+        <td colspan="2" style="border-top:solid 4px"></td>
+      </tr>
+      <tr>
+        <td colspan="2" style="text-align:left;">
           <div style="white-space: nowrap;">
             <div style="min-width: 45px; display: inline-block; white-space: nowrap; text-align: right;">
 
@@ -1470,60 +1575,70 @@ div#Splashdiv {
         </td>
       </tr>
     </table>
-
-    <table class="collapseablecontent" id="NoFavoriteServersContent">
+    <table class="collapsiblecontent" id="FavoriteServersContent">
       <tr>
-        <td colspan="2">No Servers Added</td>
+        <td colspan="2" >
+          <input type="checkbox" id="ServerFavoritesSort" >
+          <b>Sort Favorite Servers Numerically</b>
+        </td>
       </tr>
       <tr>
-        <td colspan="2">Use Server Lookup</td>
+        <td colspan="2" >
+          <input type="checkbox" onchange="check(this)" id="ServerFavoritesCheck" >
+          <b>Query Info from Servers</b>
+        </td>
       </tr>
-    </table>
-
-    <table class="collapseablecontent" id="FavoriteServersContent">
-    </table>
-
-    <table class="tablecontent">
       <tr>
-        <td colspan="2" style="border-top:solid 2px"></td>
+        <td>Refresh Interval:</td>
+        <td><input type="text" class="text" id="ServerFavoritesRefresh" ></td>
       </tr>
-    </table>
-
-
-    <table class="tablecontent">
+      <tr>
+        <td colspan="2" class="submitCellDouble">
+          <input type="button" value="Query Now" onclick="goto(this)" id="QueryNow">
+          <input type="button" value="Update" onclick="goto(this)" id="UpdateServerFavoritesSettings">
+        </td>
+      </tr>
       <tr>
         <td colspan="2" align="left">
+          <table class="collapsiblecontent" id="FavoriteServersContentInner">
+          </table>
+        </td>
+      </tr>
+    </table>
+
+    <table class="tablecontent">
+      <tr>
+        <td colspan="2" style="border-top:solid 4px"></td>
+      </tr>
+      <tr>
+        <td colspan="2" style="text-align:left;">
           <div style="white-space: nowrap;">
             <div style="min-width: 45px; display: inline-block; white-space: nowrap; text-align: right;">
-                <input type="checkbox" onchange="check(this)" id="ServerLookupCheck" >
+
             </div>
             <div style="display: inline-block;">
-                <button type="button" onclick="buttonpress(this)" class="dropdownbutton" id="ServerLookup"> <img id="ServerLookupArrow" src="Captures\Arrow0.png"></button>
-                <b>Server Lookup</b>
+              <button type="button" onclick="buttonpress(this)" class="dropdownbutton" id="ServersResults"> <img id="ServersResultsArrow" src="Captures\Arrow0.png"></button> 
+              <b>Server Lookup</b>
             </div>
           </div>
         </td>
       </tr>
       <tr>
-        <td>Server String:</td>
-        <td><input type="text" id="ServerString" ></td>
+        <td nowrap>Server String:</td>
+        <td><input type="text" class="text" id="ServerString" ></td>
       </tr>
       <tr>
-        <td>Refresh Interval(s):</td>
-        <td><input type="text" id="ServerRefresh" ></td>
+        <td colspan="2" class="submitCellSingle">
+          <input type="button" value="Search" onclick="goto(this)" id="SearchServer">
+        </td>
       </tr>
-    
       <tr>
-        <td align="center" colspan="2">
-          <input type="button" onclick="goto(this)" id="AddServer" value="Favorite Server" disabled>
-          <input type="button" value="Update" onclick="goto(this)" id="UpdateServer">
+        <td colspan="2">
+          <table class="collapsiblecontent" id="ServersResultsContent">
+          </table>
         </td>
       </tr>
     </table>
-
-    <table class="collapseablecontent" id="ServerLookupContent">
-    </table>
-
   </td>
 </tr>
 
@@ -1550,7 +1665,7 @@ div#Splashdiv {
 
 </table>
 
-</p>
+</body>
 
 
 
@@ -1570,16 +1685,30 @@ function buttonpress(id){
   var img = document.getElementById(id.id + 'Arrow');
   var content = document.getElementById(id.id + 'Content');
   if (content != null){
-    if (content.style.display === "block") {
+    if (content.style.display === "none" || content.style.display === "") {
+        // content.style.display = "block";
+        content.style.display = 'table';
+        content.style.width = '100%';
+        img.src = 'Captures\\Arrow1.png';
+      } else {
         content.style.display = "none";
         img.src = 'Captures\\Arrow0.png';
-        if (id.id === "FavoriteServers")
-          document.getElementById('NoFavoriteServersContent').style.display = "none";
+      }
+  }
+
+  window.location.href = 'myapp://' + id.id;
+
+}
+
+function buttonpress2(id){
+  var content = document.getElementById(id.id + 'Content');
+  if (content != null){
+    if (content.style.display === "none") {
+        content.style.display = "table-row";
+
+        
       } else {
-        content.style.display = "block";
-        img.src = 'Captures\\Arrow1.png';
-        if (id.id === "FavoriteServers")
-          document.getElementById('NoFavoriteServersContent').style.display = "block";
+        content.style.display = "none";
       }
   }
 
