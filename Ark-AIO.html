@@ -304,8 +304,11 @@ div#Splashdiv {
         </td>
       </tr>
       <tr>
-        <td colspan="2">
-          <input type="checkbox" id="KeepActive" > Keep Game Active if AFK
+        <td nowrap>
+          <input type="checkbox" id="AlertsInput7" > Timed Alerts
+        </td>
+        <td nowrap>
+          <input type="checkbox" id="AlertsInput8" > Anti AFK
         </td>
       </tr>
       <tr>
@@ -366,17 +369,15 @@ div#Splashdiv {
 
       <tr>
         <td colspan="2">
-          <table align="center">
+          <table style="text-align:center;width:100%;">
             <tr>
-              <td nowrap>
+              <td nowrap style="text-align:center;width:100%;">
                 <input type="radio" id="CDToggle0" name="CDToggle" value="0" onclick="goto(this)" > Notify
               </td>
-              <td></td>
-              <td nowrap>
+              <td style="text-align:center;width:100%;">
                 <input type="radio" id="CDToggle2" name="CDToggle" value="2" onclick="goto(this)" > Food Countdown
               </td>
-              <td></td>
-              <td nowrap>
+              <td nowrap style="text-align:center;width:100%;">
                 <input type="radio" id="CDToggle1" name="CDToggle" value="1" onclick="goto(this)" > Close Ark
               </td>
 
@@ -1123,6 +1124,7 @@ div#Splashdiv {
           </div>
         </td>
       </tr>
+
       <tr>
         <td colspan="2" align="left">
           <div style="white-space: nowrap;">
@@ -1131,6 +1133,19 @@ div#Splashdiv {
             </div>
             <div style="display: inline-block;">
               <b>Show Debug Naming Window</b>
+            </div>
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <td colspan="2" align="left">
+          <div style="white-space: nowrap;">
+            <div style="min-width: 45px; display: inline-block; white-space: nowrap; text-align: right;">
+              <input type="checkbox" onchange="check(this)" id="ClipMutNumsCheck" >
+            </div>
+            <div style="display: inline-block;">
+              <b>Copy Mutation Number to Clipboard</b>
             </div>
           </div>
         </td>
