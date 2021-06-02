@@ -348,6 +348,15 @@ div#Splashdiv {
           Display on Screen
         </td>
       </tr>
+
+
+
+      <tr>
+        <td colspan="2" class="submitCellSingle">
+          <input type="button" onclick="goto(this)" id="SetupCountdown" value="Setup Overlay" >
+        </td>
+      </tr>
+<!---
       <tr>
         <td>Position X:</td>
         <td><input type="number" class="number" id="CDX" ></td>
@@ -365,7 +374,7 @@ div#Splashdiv {
       <tr>
         <td colspan="2" style="border-top:solid 2px"></td>
       </tr>
-
+--->
 
       <tr>
         <td colspan="2">
@@ -475,27 +484,11 @@ div#Splashdiv {
           Display on Screen
         </td>
       </tr>
-      <tr>
-        <td>Position X:</td>
-        <td><input type="number" class="number" id="TAX" ></td>
-      </tr>
-      <tr>
-        <td>Position Y:</td>
-        <td><input type="number" class="number" id="TAY" ></td>
-      </tr>
-      <tr>
-        <td>Text Size:</td>
-        <td><input type="number" class="number" id="TASize" ></td>
-      </tr>
 
       <tr>
         <td colspan="2" class="submitCellSingle">
-          <input type="button" onclick="buttonpress(this)" value="Update Screen" id="UpdateTAScreen">
+          <input type="button" onclick="buttonpress(this)" value="Setup Overlay" id="SetupTAScreen">
         </td>
-      </tr>
-
-      <tr>
-        <td colspan="2" style="border-top:solid 2px"></td>
       </tr>
 
       <tr>
@@ -1095,10 +1088,13 @@ div#Splashdiv {
             </tr>
 
             <tr>
-              <td>
+              <td colspan="2">
                 <input type="checkbox" id="ASBgreyscale" onchange="window.location.href='myapp://rangerelease/'+this.id;"> Grey Scale
               </td>
-              <td class="submitCellSingle">
+            </tr>
+            <tr>
+              <td colspan="2" class="submitCellDouble">
+                <input type="button" value="Setup Overlay" onclick="goto(this)" id="SetupExport" >
                 <input type="button" value="Update Settings" onclick="goto(this)" id="UpdateASBsnip" >
               </td>
             </tr>
@@ -1180,6 +1176,13 @@ div#Splashdiv {
       </tr>
 
       <tr>
+        <td style="width:50%;" nowrap>Helena Variation:</td>
+        <td style="width:50%;" nowrap>
+          <input type="number" class="number" id="HelenaVariation" min="0" max="255">
+        </td>
+      </tr>
+
+      <tr>
         <td style="width:50%;" nowrap>Offset X:</td>
         <td style="width:50%;" nowrap>
           <input type="number" class="number" id="HelenaXoff">
@@ -1193,6 +1196,7 @@ div#Splashdiv {
         </td>
       </tr>
 
+<!---
       <tr>
         <td style="width:50%;" nowrap>Window X:</td>
         <td style="width:50%;" nowrap>
@@ -1220,7 +1224,7 @@ div#Splashdiv {
           <input type="number" class="number" id="HelenaH">
         </td>
       </tr>
-
+--->
 
       <tr>
         <td>Overlay Alpha:</td>
@@ -1230,7 +1234,8 @@ div#Splashdiv {
       </tr>
 
       <tr>
-        <td colspan="2" class="submitCellSingle">
+        <td colspan="2" class="submitCellDouble">
+          <input type="button" onclick="goto(this)" id="SetupHelena" value="Setup Overlay">
           <input type="button" onclick="goto(this)" id="UpdateHelena" value="Update Helena">
         </td>
       </tr>
