@@ -312,6 +312,15 @@ div#Splashdiv {
         </td>
       </tr>
       <tr>
+      <tr>
+        <td nowrap>
+          <input type="checkbox" id="AlertsInput9" > Join Sim
+        </td>
+        <td nowrap>
+          
+        </td>
+      </tr>
+      <tr>
         <td colspan="2" class="submitCellSingle">
           <input type="button" value="Update Alerts" onclick="goto(this)" id="UpdateAlerts">
         </td>
@@ -412,7 +421,7 @@ div#Splashdiv {
         <td>Reset Timer Key:</td><td><input type="text" class="text" id="CDResetKey" ></td>
       </tr>
       <tr class="alertnotify" id="alertnotify4">
-        <td>Key Presses Reset:</td><td><input type="text" class="text" id="CDResetNumber" ></td>
+        <td>Key Presses Reset:</td><td><input type="number" class="text" id="CDResetNumber" ></td>
       </tr>
 
 <!-- --------------------------------------------------------------------------------------------------------- -->
@@ -968,6 +977,21 @@ div#Splashdiv {
           <table class="collapsiblecontent" id="DinoExportSettingsContent">
             <tr>
               <td colspan="2" style="border-top:solid 2px"></td>
+            </tr>
+
+            <tr>
+              <td colspan="2">
+                <table>
+                  <tr>
+                    <td style="width:75%;">
+                      <input type="checkbox" onchange="check(this)" id="BabyRates" > Override Maturation :
+                    </td>
+                    <td>
+                      <input type="number" class="number" id="BabyRatesMult">
+                    </td>
+                  </tr>
+                </table>
+              </td>
             </tr>
 
             <tr>
@@ -1534,7 +1558,7 @@ div#Splashdiv {
         <td colspan="2" align="left">
           <div style="white-space: nowrap;">
             <div style="min-width: 45px; display: inline-block; white-space: nowrap; text-align: right;">
-              
+              <input type="checkbox" onchange="check(this)" id="OfficialRatesCheck" >
             </div>
             <div style="display: inline-block;">
               <button type="button" onclick="buttonpress(this)" class="dropdownbutton" id="OfficialRates"> <img id="OfficialRatesArrow" src="Captures\Arrow0.png"></button> 
@@ -1547,19 +1571,7 @@ div#Splashdiv {
 
     <table class="collapsiblecontent" id="OfficialRatesContent">
       <tr>
-        <td colspan="2" style="text-align:center;">
-          <div style="white-space: nowrap;">
-            <div style="min-width: 45px; display: inline-block; white-space: nowrap; text-align: right;">
-                <input type="checkbox" onchange="check(this)" id="OfficialRatesCheck" >
-            </div>
-            <div style="display: inline-block;">
-                <b>Refresh Official Rates</b>
-            </div>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <td>Refresh Interval:</td>
+        <td style="width:50%;" nowrap>Refresh Interval:</td>
         <td><input type="text" class="text" id="OfficialRatesRefresh" ></td>
       </tr>
       <tr>
@@ -1574,6 +1586,64 @@ div#Splashdiv {
         </td>
       </tr>
     </table>
+
+
+
+
+
+
+
+
+
+    <table class="tablecontent">
+      <tr>
+        <td colspan="2" style="border-top:solid 4px"></td>
+      </tr>
+      <tr>
+        <td colspan="2" align="left">
+          <div style="white-space: nowrap;">
+            <div style="min-width: 45px; display: inline-block; white-space: nowrap; text-align: right;">
+              <input type="checkbox" onchange="check(this)" id="JoinSimCheck" >
+            </div>
+            <div style="display: inline-block;">
+              <button type="button" onclick="buttonpress(this)" class="dropdownbutton" id="JoinSim"> <img id="JoinSimArrow" src="Captures\Arrow0.png"></button> 
+              <b>Join Sim</b>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </table>
+
+    <table class="collapsiblecontent" id="JoinSimContent">
+      <tr>
+        <td colspan="2" style="border-top:solid 2px"></td>
+      </tr>
+      <tr>
+        <td colspan="2" style="font-weight:bold; text-align: center;" id="JoinSimName"></td>
+      </tr>
+      <tr>
+        <td style="width:50%;" nowrap>Server to Join:</td>
+        <td><input type="text" class="text" id="JoinSimString" ></td>
+      </tr>
+      <tr>
+        <td style="width:50%;" nowrap>Attempt Delay:</td>
+        <td><input type="text" class="text" id="JoinSimRefresh" ></td>
+      </tr>
+
+
+
+      <tr>
+        <td colspan="2" class="submitCellSingle">
+          <input type="button" value="Update" onclick="goto(this)" id="UpdateJoinSimSettings">
+        </td>
+      </tr>
+    </table>
+
+
+
+
+
+
 
 
 
