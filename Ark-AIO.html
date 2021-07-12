@@ -317,7 +317,7 @@ div#Splashdiv {
           <input type="checkbox" id="AlertsInput9" > Join Sim
         </td>
         <td nowrap>
-          
+          <input type="checkbox" id="AlertsInput10" > Official Rates
         </td>
       </tr>
       <tr>
@@ -588,6 +588,13 @@ div#Splashdiv {
         <td>
           <select id="oVoiceSelect" class="SelectDropdown">
           </select>
+        </td>
+      </tr>
+
+      <tr>
+        <td>Test String:</td>
+        <td>
+          <input type="text" class="text" value="testing deez except gacha thats all folks" id="AlertTestString" >
         </td>
       </tr>
 
@@ -1521,11 +1528,11 @@ div#Splashdiv {
       </tr>
       <tr>
         <td colspan="2">
-          <input type="checkbox" id="AutoQTSlotCap" > Auto "Quick Transfer" on Slot Cap
+          <input type="checkbox" id="AutoQTSlotCap" > Quick Transfer on Slot Cap
         </td>
       </tr>
       <tr>
-        <td>Auto Delay(s):</td>
+        <td>Check Delay(s):</td>
         <td><input type="number" class="number" id="AutoQTCapDelay" ></td>
       </tr>
 
@@ -1535,7 +1542,43 @@ div#Splashdiv {
       <tr>
         <td colspan="2" class="submitCellDouble">
             <input type="button" onclick="window.location.href='myapp://QTPreset/'+this.id;" value="Remove Preset" id="QTRemovePreset">
-            <input type="button" value="Update" onclick="goto(this)" id="UpdateQT">
+            <input type="button" value="Update QT" onclick="goto(this)" id="UpdateQT">
+        </td>
+      </tr>
+
+
+      <tr>
+        <td colspan="2" style="border-top:solid 4px"></td>
+      </tr>
+
+
+
+
+      <tr>
+        <td colspan="2" class="innerCheck">
+          <input type="checkbox" onchange="check(this)" id="PopcornCheck" > Popcorn Enabled
+        </td>
+      </tr>
+
+
+      <tr>
+        <td style="width:50%;">Ctrl+Shift+Hotkey:</td>
+        <td><input type="text" class="text" id="PopcornHotkey" ></td>
+      </tr>
+
+      <tr>
+        <td style="width:50%;">Rows:</td>
+        <td><input type="text" class="text" id="PopcornRows" ></td>
+      </tr>
+
+      <tr>
+        <td style="width:50%;">Slot Delay(ms):</td>
+        <td><input type="text" class="text" id="PopcornDelay" ></td>
+      </tr>
+
+      <tr>
+        <td colspan="2" class="submitCellSingle">
+           <input type="button" value="Update Popcorn" onclick="goto(this)" id="UpdatePopcorn">
         </td>
       </tr>
     </table>
@@ -1628,6 +1671,10 @@ div#Splashdiv {
       <tr>
         <td style="width:50%;" nowrap>Attempt Delay:</td>
         <td><input type="text" class="text" id="JoinSimRefresh" ></td>
+      </tr>
+      <tr>
+        <td style="width:50%;" nowrap>Color Variation:</td>
+        <td><input type="text" class="text" id="JoinSimVariation" ></td>
       </tr>
 
 
