@@ -92,6 +92,9 @@ tr.dropdownline td div.button.r {
   left: 6px;
 }
 
+.longtext {
+  width:100%;
+}
 
 .dropdownbutton, .dropdownbutton2 {
   background-color: transparent;
@@ -159,12 +162,20 @@ tr.submitCellDouble td{
   outline:none;
 }
 
-input, select {
+input, select, textarea {
   background-color: #111111;
   color: white;
   font-size: 16px;
 }
 
+textarea {
+  padding: 4px 4px;
+  box-sizing: border-box;
+  width:96% !important;
+  margin-left:2%;
+  margin-right:2%;
+  margin-bottom:2%;
+}
 
 select {
   -webkit-appearance: none !important;
@@ -211,7 +222,7 @@ input[type=button]  {
   font-size: 18px;
   border-radius: 20px;
   padding: 5px 10px;
-  background: linear-gradient(#000000 ,#222222 99%);
+  background: linear-gradient(#111 ,#444 99%);
   border: 0px;
   transition: background-color 0.2s;
   position: relative;
@@ -402,7 +413,7 @@ input:focus, select:focus {
   overflow: hidden;
   white-space: nowrap;
   display: inline-block;
-  box-shadow:0 0 22px #000000 ;
+  /*box-shadow:0 0 22px #000000 ;*/
 }
 
 .button.r, .button.r .layer, .button.r2, .button.r2 .layer {
@@ -475,10 +486,11 @@ span.check {
     position: relative;
     border-radius: 100px;
     background-color: transparent;
+    box-shadow:0 0 20px #000000 ;
 /*    transition: all 0.15s; */
 }
 
-
+span#ASBvalueset, span#Exportset,  {display:none;}
 
 
 .knobs {
@@ -487,10 +499,14 @@ span.check {
 
 .layer {
   width: 100%;
-  background-color: #666666;
+  background-color: #444;
 /*  transition: 0.2s ease all; */
   z-index: 1;
 }
+
+.button.r .checkbox:checked ~ .layer, .button.r2 .checkbox:checked ~ .layer{background-color: white; background-blend-mode: multiply;}
+.button.r .checkbox ~ .layer, .button.r2 .checkbox ~ .layer{background-color: black; background-blend-mode: multiply;}
+
 
 .button.r .knobs:before, .button.r2 .knobs:before {
   content: "";
@@ -500,17 +516,18 @@ span.check {
   width: 10px;
   height: 6px;
   padding: 5px 2px;
-  background-color: #ffffff;
+  
+  background-color: rgba(0, 0, 0, 0.33);
   border-radius: 50%;
-  box-shadow:0 0 10px #000000;
+  box-shadow:0 0 8px #000000; 
 /*  transition: 0.2s ease all; */
 }
-
 
 .button.r .checkbox:checked + .knobs:before, .button.r2 .checkbox:checked + .knobs:before {
   content: "";
   left: 33px;
-  box-shadow:0 0 25px #ffffff;
+  background-color: rgba(255, 255, 255, 0.33);
+  box-shadow:0 0 18px #ffffff;
 }
 
 .knobs:before {
@@ -567,8 +584,19 @@ span.check {
 
 
 
-
 </style>
+
+
+
+<style data="test" type="text/css"></style>
+
+
+
+
+
+
+
+
 </head>
 
 <body>
@@ -600,7 +628,7 @@ span.check {
   <td colspan="10"> 
 
     <table class="tablecontent">
-      <tr>
+      <tr id="ActualAlertsDropDown">
         <td colspan="2" align="left">
           <div class="div-row">
             <button type="button" onclick="buttonpress(this)" class="dropdownbutton2" id="ActualAlerts"> <img id="ActualAlertsArrow" class="Arrow" src="Captures\Arrow0.png"> Alerts Enabled</button>
@@ -714,7 +742,7 @@ span.check {
       <tr>
         <td colspan="2" style="border-top:solid 4px"></td>
       </tr>
-      <tr>
+      <tr id="CDDropDown">
         <td colspan="2" align="left">
           <div class="div-row">
             <button type="button" onclick="buttonpress(this)" class="dropdownbutton2" id="CD"> <img id="ActualAlertsArrow" class="Arrow" src="Captures\Arrow0.png"> Countdown Timer</button>
@@ -1376,7 +1404,80 @@ span.check {
 
 
 
+<tr class="dropdownline" id="CMDropDown" >
+  <td>
+    <button type="button" onclick="buttonpress(this)" class="dropdownbutton" id="CM"> <img id="ConsoleCommandsArrow" class="Arrow" src="Captures\Arrow0.png"> Console Macros</button>
+  </td>
+</tr>
 
+
+<tr id="CMContent" class="content">
+  <td colspan="10">
+    <table class="tablecontent">
+        <tr style="background-color: #220000;">
+          <td>Hotkey 1:</td><td><input type="text" id="CM1Hotkey" ></td>
+        </tr>
+        <tr style="background-color: #220000;"><td colspan="2" style="text-align: center;">Console Command 1</td></tr>
+        <tr style="background-color: #220000;"><td colspan="2"><textarea id="CM1Com" class="longtext" rows="4" cols="35"></textarea></td></tr>
+
+        <tr>
+          <td colspan="2" style="border-top:solid 2px"></td>
+        </tr>
+
+
+        <tr style="background-color: #222200;">
+          <td>Hotkey 2:</td><td><input type="text" id="CM2Hotkey" ></td>
+        </tr>
+        <tr style="background-color: #222200;"><td colspan="2" style="text-align: center;">Console Command 2</td></tr>
+        <tr style="background-color: #222200;"><td colspan="2"><textarea id="CM2Com" class="longtext" rows="4" cols="35"></textarea></td></tr>
+
+        <tr>
+          <td colspan="2" style="border-top:solid 2px"></td>
+        </tr>
+
+
+        <tr style="background-color: #002200;">
+          <td>Hotkey 3:</td><td><input type="text" id="CM3Hotkey" ></td>
+        </tr>
+        <tr style="background-color: #002200;"><td colspan="2" style="text-align: center;">Console Command 3</td></tr>
+        <tr style="background-color: #002200;"><td colspan="2"><textarea id="CM3Com" class="longtext" rows="4" cols="35"></textarea></td></tr>
+
+
+
+        <tr>
+          <td colspan="2" style="border-top:solid 2px"></td>
+        </tr>
+
+
+        <tr style="background-color: #002222;">
+          <td>Hotkey 4:</td><td><input type="text" id="CM4Hotkey" ></td>
+        </tr>
+        <tr style="background-color: #002222;"><td colspan="2" style="text-align: center;">Console Command 4</td></tr>
+        <tr style="background-color: #002222;"><td colspan="2"><textarea id="CM4Com" class="longtext" rows="4" cols="35"></textarea></td></tr>
+
+
+
+        <tr>
+          <td colspan="2" style="border-top:solid 2px"></td>
+        </tr>
+
+
+        <tr style="background-color: #000022;">
+          <td>Hotkey 5:</td><td><input type="text" id="CM5Hotkey" ></td>
+        </tr>
+        <tr style="background-color: #000022;"><td colspan="2" style="text-align: center;">Console Command 5</td></tr>
+        <tr style="background-color: #000022;"><td colspan="2"><textarea id="CM5Com" class="longtext" rows="4" cols="35"></textarea></td></tr>
+
+
+
+      <tr>
+        <td colspan="2" class="submitCellSingle">
+          <input type="button" value="Update" onclick="window.location.href = 'myapp://' + this.id;" id="UpdateCM">
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>
 
 
 
@@ -1598,10 +1699,13 @@ span.check {
   <td colspan="10"> 
     <table class="tablecontent">
       <tr>
-        <td colspan="2" align="left">
+        <td align="left">
           <div class="div-row">
-            <button type="button" onclick="buttonpress(this)" class="dropdownbutton2" id="AutoDinoExport"> <img id="AutoDinoExportArrow" class="Arrow" src="Captures\Arrow0.png"> Dino Export Infos</button>
-          </div>
+            <button type="button" onclick="buttonpress(this)" class="dropdownbutton2" id="AutoDinoExport"> <img id="AutoDinoExportArrow" class="Arrow" src="Captures\Arrow0.png"> Dino Export Infos</button> 
+          </div> 
+        </td>
+        <td>
+          <input type="button" onclick="window.location.href = 'myapp://' + this.id;" id="LastExport" value="Last Export" class="ExportBtn">
         </td>
       </tr>      
     </table>
@@ -1625,12 +1729,15 @@ span.check {
             </tr>
 
 
-            <tr class="submitCellDouble">
+            <tr class="submitCellSingle">
               <td>
                 <input type="button" onclick="window.location.href = 'myapp://' + this.id;" id="TotalExports" value="Clean Exports" class="ExportBtn">
               </td>
+            </tr>
+            <tr class="submitCellDouble">
               <td>
-                <input type="button" onclick="window.location.href = 'myapp://' + this.id;" id="LastExport" value="Last Export" class="ExportBtn">
+                <span id="ASBvalueset"></span>
+                <span id="Exportset"></span>
               </td>
             </tr>
             <tr>
@@ -1657,9 +1764,12 @@ span.check {
                 <input type="button" onclick="window.location.href = 'myapp://' + this.id;" id="SelectExports" value="Select Exports Folder">
               </td>
             </tr>            
-            <tr class="submitCellSingle">
-              <td colspan="2">
-                <input type="button" onclick="window.location.href = 'myapp://' + this.id;" id="SelectASB" value="Select ASB values.json">
+            <tr class="submitCellDouble">
+              <td>
+                <input type="button" onclick="window.location.href = 'myapp://' + this.id;" id="SelectASB" value="Select ASB values">
+              </td>
+              <td>
+                <input type="button" onclick="window.location.href = 'myapp://' + this.id;" id="OpenASB" value="Open ASB values">
               </td>
             </tr>
             <tr class="subrow">
@@ -1729,7 +1839,7 @@ span.check {
                             <div class="box">
                               <input type="checkbox" class="checkbox2" id="BabyRates" onchange="check(this)">
                               <span class="check"></span>
-                              <label for="BabyRates">Override Maturation :</label>
+                              <label for="BabyRates">Override Maturation (<span id="BabyRatesDisp"></span>):</label>
                             </div>
                           </td>
                           <td>
@@ -2836,7 +2946,7 @@ function check(id){
 
 
 function updateRange(range){
-  var currentVal = range.value;
+  var currentVal = range.value * 0.3;
   if (currentVal.length == 1)
     currentVal = "0" + currentVal;
   var term = range.id;
@@ -2844,12 +2954,18 @@ function updateRange(range){
   var reG = new RegExp("G$");
   var reB = new RegExp("B$");
   if (reR.test(term)) {
-    //slider.style.setProperty( '-ms-thumb', `#FFFF00`);
-    range.style.backgroundColor = '#' + currentVal + '0000';
+    //slider.style.setProperty( '--ms-thumb', `#FFFF00`);
+    //range.style.backgroundColor = '#' + currentVal + '0000';
+    range.style.boxShadow = '0px 0px 10px #' + currentVal + '0000';
+
   }else if (reG.test(term)) {
-    range.style.backgroundColor = '#00' + currentVal + '00';
+    //range.style.backgroundColor = '#00' + currentVal + '00';
+    range.style.boxShadow = '0px 0px 10px #00' + currentVal + '00';
+
   }else if (reB.test(term)) {
-    range.style.backgroundColor = '#0000' + currentVal;
+    //range.style.backgroundColor = '#0000' + currentVal;
+    range.style.boxShadow = '0px 0px 10px #0000' + currentVal;
+
   }
   //document.getElementById('XhairOffsetX').value = '\x' + currentVal;
 
