@@ -763,6 +763,18 @@ ul#ScreenshotsList li img {
           </div>
         </td>
       </tr>
+      <tr class="subrow">
+        <td nowrap>
+          <div class="box check11">
+            <input type="checkbox" class="checkbox2" id="AlertsInput11">
+            <span class="check"></span>
+            <label for="AlertsInput11">Feed Babies Spinner</label>
+          </div>
+        </td>
+        <td nowrap>
+
+        </td>
+      </tr>
       <tr>
         <td colspan="2" class="submitCellSingle">
           <input type="button" value="Update Alerts" onclick="window.location.href = 'myapp://' + this.id;" id="UpdateAlerts">
@@ -2380,6 +2392,19 @@ ul#ScreenshotsList li img {
         <td><input type="text" id="FeedBabiesString" ></td>
       </tr>
       <tr>
+        <td>Inventory Key: <div class="tooltip">?<span class="tooltiptext">This is the key to access Inventories. Usually E, so you can drink water while you spin. F can be used instead, as well as other keybinds.</span></div></td>
+        <td><input type="text" id="FeedBabiesInvKey" ></td>
+      </tr>
+      <tr>
+        <td>Max Inventory Attempts: <div class="tooltip">?<span class="tooltiptext">If the player cannot access an inventory after a number of attempts, an alert will go off. Be sure to enable up in the Alerts section.</span></div></td>
+        <td><input type="number" id="FeedBabiesInvMax" ></td>
+      </tr>
+      <tr>
+        <td>Action Delay (ms): <div class="tooltip">?<span class="tooltiptext">Time between actions and decisions. Set this higher on laggy servers.</span></div></td>
+        <td><input type="number" id="FeedBabiesDelay" ></td>
+      </tr>
+
+      <tr>
         <td>Current Task:</td>
         <td><input type="text" id="FeedBabiesDebugInfo" disabled value="Waiting..."></td>
       </tr>
@@ -2432,7 +2457,26 @@ ul#ScreenshotsList li img {
         <td><input type="text" id="FishingHotkey" ></td>
       </tr>
       <tr>
+        <td style="width:50%;">Delay (ms):</td>
+        <td><input type="text" id="FishingDelay" ></td>
+      </tr>
+      <tr>
         <td>Current Task:</td><td><input type="text" id="FeedBabiesDebugInfo" disabled value="Waiting..."></td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <table>
+            <tr class="subrow">
+              <td style="width:75%;" colspan="2">
+                <div class="box check1">
+                  <input type="checkbox" class="checkbox2" id="FishingVisualOverlay" >
+                  <span class="check"></span>
+                  <label for="FishingVisualOverlay">Show Visual Overlay</label>
+                </div>
+              </td>
+            </tr>
+          </table>
+        </td>
       </tr>
       <tr>
         <td colspan="2">
@@ -2644,8 +2688,21 @@ ul#ScreenshotsList li img {
       </tr>
 
       <tr>
-        <td colspan="2" class="submitCellSingle">
-           <input type="button" value="Update Popcorn" onclick="window.location.href = 'myapp://' + this.id;" id="UpdatePopcorn">
+        <td colspan="2">
+          <table>
+            <tr class="subrow">
+              <td style="width:75%;">
+                <div class="box check4">
+                  <input type="checkbox" class="checkbox2" id="PopcornVisualOverlay" >
+                  <span class="check"></span>
+                  <label for="PopcornVisualOverlay">Show Visual Overlay</label>
+                </div>
+              </td>
+              <td class="submitCellSingle">
+                <input type="button" value="Update" onclick="window.location.href = 'myapp://' + this.id;" id="UpdatePopcorn" >
+              </td>
+            </tr>
+          </table>
         </td>
       </tr>
       <tr>
