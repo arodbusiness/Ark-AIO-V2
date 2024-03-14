@@ -1067,6 +1067,15 @@ ul#ScreenshotsList li img {
         </td>
       </tr>
     </table>
+
+
+
+    <table class="tablecontent">
+      <tr>
+        <td colspan="2" class="ender"></td>
+      </tr>
+    </table>
+
   </td>
 </tr>
 
@@ -2361,7 +2370,20 @@ ul#ScreenshotsList li img {
         <td>Columns:</td>
         <td><input type="number" id="EDcols" ></td>
       </tr>
+      <tr class="subrow2">
+        <td>Start Direction:</td>
+        <td> 
+          <div class="spanner2">
+            <div class="radio-wrapper2">
+              <input type="radio" class="neutral radio radio11" name="EDcolsKeyCheck" id="EDcolsKeyCheck0" value="0" onchange="document.getElementById('EDcolsKeyCheck').innerHTML = 'Right';"/>
+              <label for="EDcolsKeyCheck0"></label>
 
+              <input type="radio" class="yes radio radio10" name="EDcolsKeyCheck" id="EDcolsKeyCheck1" value="1" onchange="document.getElementById('EDcolsKeyCheck').innerHTML = 'Left';"/>
+              <label for="EDcolsKeyCheck1"></label>
+            </div>
+            <span class="radioIndicate" id="EDcolsKeyCheck"></span>
+        </td>
+      </tr>
       <tr class="submitCellDouble">
         <td colspan="2">
           <input type="button" onclick="window.location.href = 'myapp://' + this.id;" value="Update Egg Dropper" id="UpdateED">
@@ -2765,7 +2787,126 @@ ul#ScreenshotsList li img {
 
 
 
+<tr class="dropdownline" id="JoinSimDropDown" >
 
+  <td>
+    <button type="button" onclick="buttonpress(this)" class="dropdownbutton" id="JoinSim"> <img id="JoinSimArrow" class="Arrow" src="Captures\Arrow0.png"> Join Sim</button>
+  </td>
+  <td style="width:100%">
+    <div class="button r check1" style="float: right;">
+      <input type="checkbox" class="checkbox" onchange="check(this)" id="JoinSimCheck" />
+      <div class="knobs"></div>
+      <div class="layer"></div>
+    </div>
+  </td>
+</tr>
+
+<tr id="JoinSimContent" class="content">
+  <td colspan="10"> 
+    <table class="tablecontent">
+
+      <tr>
+        <td colspan="2" style="font-weight:bold; text-align: center;" id="JoinSimName"></td>
+      </tr>
+
+      <tr>
+        <td style="width:50%;" nowrap>Search:</td>
+        <td><input type="text" id="JoinSimString" ></td>
+      </tr>
+
+      <tr>
+        <td style="width:50%;" nowrap>Delay (s):</td>
+        <td><input type="number" id="JoinSimDelay" ></td>
+      </tr>
+
+      <tr><td colspan="2" style="text-align: center;"><div class="tooltip">String Function ?<span class="tooltiptext">Do not modify this unless you know what your doing. Ask Master for updates.</span></div></td></tr>
+      <tr><td colspan="2"><textarea id="JoinSim" class="longtext" rows="6"></textarea></td></tr>
+
+
+      <tr>
+        <td colspan="2">
+          <div class="box check1">
+            <input type="checkbox" class="checkbox2" id="JoinSimDebugCheck">
+            <span class="check"></span>
+            <label for="JoinSimDebugCheck">Debug Main Menu </label>
+          </div>
+        </td>
+      </tr>
+
+      <tr class="submitCellDouble">
+        <td colspan="2">
+          <input type="button" value="Update Join Sim" onclick="window.location.href = 'myapp://' + this.id;" id="UpdateJoinSimSettings">
+        </td>
+      </tr>
+
+      <tr>
+        <td colspan="2" class="ender"></td>
+      </tr>
+
+
+    </table>
+  </td>
+</tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<tr class="dropdownline" id="OfficialRatesDropDown" >
+  <td>
+      <button type="button" onclick="buttonpress(this)" class="dropdownbutton2" id="OfficialRates"> <img id="OfficialRatesArrow" class="Arrow" src="Captures\Arrow0.png"> Official Rates</button>
+  </td>
+  <td style="width:100%">
+    <div class="button r check2" style="float: right;">
+      <input type="checkbox" class="checkbox" onchange="check(this)" id="OfficialRatesCheck" />
+      <div class="knobs"></div>
+      <div class="layer"></div>
+    </div>
+  </td>
+</tr>
+
+
+<tr id="OfficialRatesContent" class="content">
+  <td colspan="10"> 
+    <table class="tablecontent">
+      <tr>
+        <td style="width:50%;" nowrap>Refresh Interval:</td>
+        <td><input type="text" id="OfficialRatesRefresh" ></td>
+      </tr>
+      <tr class="submitCellDouble">
+        <td>
+          <input type="button" value="Check Now" onclick="window.location.href = 'myapp://' + this.id;" id="OfficialRatesNow">
+        </td>
+        <td>
+          <input type="button" value="Update" onclick="window.location.href = 'myapp://' + this.id;" id="UpdateOR">
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <table class="collapsiblecontent" id="OfficialRatesContentInner">
+          </table>
+        </td>
+      </tr>
+
+      <tr>
+        <td colspan="2" class="ender"></td>
+      </tr>
+    </table>
+  </td>
+</tr>
 
 
 
@@ -2976,6 +3117,52 @@ ul#ScreenshotsList li img {
   </td>
 </tr>
 
+
+
+
+
+
+<tr class="dropdownline" id="RaidToolsDropDown" >
+  <td>
+    <button type="button" onclick="buttonpress(this)" class="dropdownbutton" id="RaidTools"> <img id="RaidToolsArrow" class="Arrow" src="Captures\Arrow0.png"> RaidTools</button>
+  </td>
+  <td style="width:100%">
+    <div class="button r check3" style="float: right;">
+      <input type="checkbox" class="checkbox" onchange="check(this)" id="RaidToolsCheck" />
+      <div class="knobs"></div>
+      <div class="layer"></div>
+    </div>
+  </td>
+</tr>
+
+<tr id="RaidToolsContent" class="content">
+  <td colspan="10"> 
+    <table class="tablecontent">
+
+
+      <tr>
+        <td>Host Ip:</td>
+        <td><input type="number" id="RTHostIP" ></td>
+      </tr>
+      <tr class="submitCellDouble">
+         <td>
+           <input type="button" value="Update" onclick="window.location.href = 'myapp://' + this.id;" id="UpdateRaidTools">
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" class="ender"></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+
+
+
+
+
+
+
+
 <tr class="dropdownline" id="ScreenshotsDropDown" >
   <td>
     <button type="button" onclick="buttonpress(this)" class="dropdownbutton" id="Screenshots"> <img id="ScreenshotsArrow" class="Arrow" src="Captures\Arrow0.png"> Screenshots</button>
@@ -3040,216 +3227,10 @@ ul#ScreenshotsList li img {
 </tr>
 
 
-<tr class="dropdownline" id="ServerInfoDropDown" >
-  <td>
-    <button type="button" onclick="buttonpress(this)" class="dropdownbutton" id="ServerInfo"> <img id="ServerInfoArrow" class="Arrow" src="Captures\Arrow0.png"> Server Info</button>
-  </td>
-
-  <td>
-    <div class="box check2" style="display: inline-block;">
-      <label for="OfficialRatesCheck2">
-        <input type="checkbox" class="checkbox2" onchange="check(this)" id="OfficialRatesCheck2" />
-        <span class="check"></span>
-      </label>
-    </div>
-    <div class="box check1" style="display: inline-block;">
-      <label for="JoinSimCheck2">
-        <input type="checkbox" class="checkbox2" onchange="check(this)" id="JoinSimCheck2" />
-        <span class="check"></span>
-      </label>
-    </div>
-  </td>
-
-</tr>
-
-<tr id="ServerInfoContent" class="content">
-  <td colspan="10"> 
-    <table class="tablecontent">
-      <tr>
-        <td colspan="2" align="left">
-          <div class="div-row">
-            <button type="button" onclick="buttonpress(this)" class="dropdownbutton2" id="OfficialRates"> <img id="OfficialRatesArrow" class="Arrow" src="Captures\Arrow0.png"> Official Rates</button>
-          </div>
-          <div class="button r check2" style="float: right;">
-            <input type="checkbox" class="checkbox" onchange="check(this)" id="OfficialRatesCheck" />
-            <div class="knobs"></div>
-            <div class="layer"></div>
-          </div>
-        </td>
-      </tr>
-    </table>
-
-    <table class="collapsiblecontent" id="OfficialRatesContent">
-      <tr>
-        <td style="width:50%;" nowrap>Refresh Interval:</td>
-        <td><input type="text" id="OfficialRatesRefresh" ></td>
-      </tr>
-      <tr class="submitCellDouble">
-        <td>
-          <input type="button" value="Check Now" onclick="window.location.href = 'myapp://' + this.id;" id="OfficialRatesNow">
-        </td>
-        <td>
-          <input type="button" value="Update" onclick="window.location.href = 'myapp://' + this.id;" id="UpdateOR">
-        </td>
-      </tr>
-      <tr>
-        <td colspan="2">
-          <table class="collapsiblecontent" id="OfficialRatesContentInner">
-          </table>
-        </td>
-      </tr>
-    </table>
 
 
 
 
-
-
-
-    <table class="tablecontent">
-      <tr>
-        <td colspan="2" class="divider"></td>
-      </tr>
-      <tr>
-        <td colspan="2" align="left">
-          <div class="div-row">
-            <button type="button" class="dropdownbutton2" id="JoinSim"  onclick="buttonpress(this)" id="JoinSim"> <img id="JoinSimArrow" class="Arrow" src="Captures\Arrow0.png"> Join Sim</button>
-          </div>
-          <div class="button r check1" style="float: right;">
-            <input type="checkbox" class="checkbox" onchange="check(this)" id="JoinSimCheck" />
-            <div class="knobs"></div>
-            <div class="layer"></div>
-          </div>
-        </td>
-      </tr>
-    </table>
-    <table class="collapsiblecontent" id="JoinSimContent">
-      <tr>
-        <td colspan="2" style="font-weight:bold; text-align: center;" id="JoinSimName"></td>
-      </tr>
-
-      <tr>
-        <td style="width:50%;" nowrap>Search:</td>
-        <td><input type="text" id="JoinSimString" ></td>
-      </tr>
-
-      <tr>
-        <td colspan="2">
-          <div class="box check1">
-            <input type="checkbox" class="checkbox2" id="JoinSimDebugCheck">
-            <span class="check"></span>
-            <label for="JoinSimDebugCheck">Debug Main Menu </label>
-          </div>
-        </td>
-      </tr>
-
-
-<!---
-      <tr>
-        <td style="width:50%;" nowrap>Delay:</td>
-        <td><input type="text" id="JoinSimRefresh" ></td>
-      </tr>
---->
-
-      <tr class="submitCellDouble">
-        <td colspan="2">
-          <input type="button" value="Update Join Sim" onclick="window.location.href = 'myapp://' + this.id;" id="UpdateJoinSimSettings">
-        </td>
-      </tr>
-    </table>
-
-
-
-
-
-
-
-
-    <table class="tablecontent">
-      <tr>
-        <td colspan="2" class="divider"></td>
-      </tr>
-      <tr>
-        <td colspan="2" style="text-align:left;">
-          <div class="div-row">
-            <button type="button" onclick="buttonpress(this)" class="dropdownbutton2" id="FavoriteServers"> <img id="FavoriteServersArrow" class="Arrow" src="Captures\Arrow0.png"> Favorite Servers</button>
-          </div>
-        </td>
-      </tr>
-    </table>
-    <table class="collapsiblecontent" id="FavoriteServersContent">
-      <tr class="subrow">
-        <td colspan="2">
-          <div class="box check2">
-            <input type="checkbox" class="checkbox2" id="ServerFavoritesSort">
-            <span class="check"></span>
-            <label for="ServerFavoritesSort">Sort Favorite Servers Numerically</label>
-          </div>
-        </td>
-      </tr>
-      <tr class="subrow">
-        <td colspan="2">
-          <div class="box check1">
-            <input type="checkbox" class="checkbox2" id="ServerFavoritesCheck" onchange="check(this)">
-            <span class="check"></span>
-            <label for="ServerFavoritesCheck">Query Info from Servers</label>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <td>Refresh Interval:</td>
-        <td><input type="text" id="ServerFavoritesRefresh" ></td>
-      </tr>
-      <tr class="submitCellDouble">
-        <td>
-          <input type="button" value="Query Now" onclick="window.location.href = 'myapp://' + this.id;" id="QueryNow">
-        </td>
-        <td>
-          <input type="button" value="Update" onclick="window.location.href = 'myapp://' + this.id;" id="UpdateServerFavoritesSettings">
-        </td>
-      </tr>
-      <tr>
-        <td colspan="2" align="left">
-          <table class="collapsiblecontent" id="FavoriteServersContentInner">
-          </table>
-        </td>
-      </tr>
-    </table>
-
-    <table class="tablecontent">
-      <tr>
-        <td colspan="2" class="divider"></td>
-      </tr>
-      <tr>
-        <td colspan="2" style="text-align:left;">
-          <div class="div-row">
-            <div style="display: inline-block;">
-              <button type="button" onclick="buttonpress(this)" class="dropdownbutton2" id="ServersResults"> <img id="ServersResultsArrow" class="Arrow" src="Captures\Arrow0.png"> Server Lookup</button>
-            </div>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <td nowrap>Server String:</td>
-        <td><input type="text" id="ServerString" ></td>
-      </tr>
-      <tr class="submitCellDouble">
-        <td colspan="2">
-          <input type="button" value="Search for Servers" onclick="window.location.href = 'myapp://' + this.id;" id="SearchServer">
-        </td>
-      </tr>
-      <tr>
-        <td colspan="2">
-          <table class="collapsiblecontent" id="ServersResultsContent">
-          </table>
-        </td>
-      </tr>
-      <tr>
-        <td colspan="2" class="ender"></td>
-      </tr>
-    </table>
-  </td>
-</tr>
 
 
 <tr class="dropdownline" id="SettingsDropDown" >
