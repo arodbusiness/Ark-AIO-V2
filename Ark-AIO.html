@@ -216,7 +216,13 @@ input, select, textarea {
   color: white;
   font-size: 16px;
 }
-
+textarea#JoinSimCountTable {
+  width: 40px !important;
+  disabled:true;
+  background-color: #333;
+  border:0;
+  text-align: right;
+}
 textarea {
   padding: 4px 4px;
   box-sizing: border-box;
@@ -395,6 +401,26 @@ input.ExportBtn{
 table#SplashColorsDispTable {
   width: 100%;
   margin: auto auto;
+}
+
+table#JoinSimImgTable {
+  background-image: radial-gradient(#333 70%, #000);/* the gradient */
+  background-origin: border-box;  /* set background to start from border-box */
+  border-spacing: 5px;  /* space between each cell */
+  border: 5px solid transparent;  /* optional */
+  width: 100%;
+}
+
+table#JoinSimImgTable tr td {
+  background-color: #333; 
+}
+
+table#JoinSimImgTable tr td img{
+  width:45px;
+  height:auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 
@@ -2477,10 +2503,7 @@ ul#ScreenshotsList li img {
         <td style="width:50%;">Function Hotkey:</td>
         <td><input type="text" id="EDHotkey" ></td>
       </tr>
-      <tr>
-        <td>Delay: (ms)</td>
-        <td><input type="number" id="EDdelay" ></td>
-      </tr>
+
       <tr>
         <td>Rows:</td>
         <td><input type="number" id="EDrows" ></td>
@@ -2488,6 +2511,10 @@ ul#ScreenshotsList li img {
       <tr>
         <td>Columns:</td>
         <td><input type="number" id="EDcols" ></td>
+      </tr>
+      <tr>
+        <td>Delay: (ms) <div class="tooltip"><b>?</b><span class="tooltiptext">Delay between most actions.</span></div></td>
+        <td><input type="number" id="EDdelay" ></td>
       </tr>
       <tr>
         <td>Check Inv Delay (ms) <div class="tooltip"><b>?</b><span class="tooltiptext">Delay after pressing I.</span></div></td>
@@ -2951,6 +2978,25 @@ ul#ScreenshotsList li img {
         <td><input type="number" id="JoinSimDelay" ></td>
       </tr>
 
+
+      <tr>
+        <td colspan="2" class="dividermini"></td>
+      </tr>
+      <tr>
+        <td nowrap colspan="2">Location of Esc button on Main Menu &nbsp;&nbsp;&nbsp;<span class="tooltiptext" id="JoinSimImg"></span></td>
+      </tr>
+
+
+      <tr>
+        <td nowrap>JoinSimX :</span></td>
+        <td><input type="number" id="JoinSimX" ></td>
+      </tr>
+
+      <tr>
+        <td nowrap>JoinSimY :</td>
+        <td><input type="number" id="JoinSimY" ></td>
+      </tr>
+
       <tr>
       <td colspan="2">
           <div class="box check1">
@@ -2961,9 +3007,38 @@ ul#ScreenshotsList li img {
         </td>
       </tr>
 
-      <tr><td colspan="2" style="text-align: center;"><div class="tooltip">String Function ?<span class="tooltiptext">Do not modify this unless you know what your doing. Ask Master for updates.</span></div></td></tr>
-      <tr><td colspan="2"><textarea id="JoinSimStringFunc" class="longtext" rows="6"></textarea></td></tr>
+      <tr>
+        <td colspan="2" class="dividermini"></td>
+      </tr>
 
+      <tr><td colspan="2" style="text-align: center;"><div class="tooltip">String Function ?<span class="tooltiptext">Do not modify this unless you know what your doing. Ask Master for updates.</span></div></td></tr>
+      
+
+
+
+
+
+      <tr>
+        <td colspan="2">
+          <table>
+            <tr>
+              <td>
+                <textarea id="JoinSimCountTable"></textarea>
+              </td>
+
+
+              <td style="width:100%;">
+                <textarea id="JoinSimStringFunc" class="longtext"></textarea>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+
+
+      <tr>
+        <td colspan="2"><table id="JoinSimImgTable"></table></td>
+      </tr>
 
       <tr>
         <td colspan="2">
@@ -3203,7 +3278,7 @@ ul#ScreenshotsList li img {
         <td><input type="text" id="QTHotkey" ></td>
       </tr>
       <tr>
-        <td>Strings Delay(ms):</td>
+        <td>Delay(ms):</td>
         <td><input type="number" id="QTDelay" ></td>
       </tr>
 
@@ -3445,7 +3520,7 @@ ul#ScreenshotsList li img {
 
       <tr>
         <td style="width:50%;">Variable Name Input:</td>
-        <td><input type="text" id="VariableInput"></td>
+        <td><input type="text" id="VariableInput" onfocusout="window.location.href='myapp://UpdateVariableInput';"></td>
       </tr>
 
       <tr>
