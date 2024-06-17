@@ -2672,41 +2672,61 @@ ul#ScreenshotsList li img {
         </td>
       </tr>
 
-      <tr>
-        <td style="width:40%;">Function Hotkey:</td>
-        <td><input type="text" id="FeedBabiesHotkey" ></td>
-      </tr>
 
       <tr>
-        <td>Action Delay (ms): <div class="tooltip">?<span class="tooltiptext">Time between actions and decisions. Set this higher on laggy servers.</span></div></td>
-        <td><input type="number" id="FeedBabiesDelay" ></td>
-      </tr>
+        <td colspan="2">
+        <div class="tabbeddiv tabbeddiv12">
+          <table>
+
+            <tr class="subrow2">
+                <td colspan="2" id="FBtabcontent1top"></td></tr>
+              <tr>
+
+            <tr>
+              <td style="width:40%;">Function Hotkey:</td>
+              <td><input type="text" id="FeedBabiesHotkey" ></td>
+            </tr>
+
+            <tr>
+              <td>Action Delay (ms): <div class="tooltip">?<span class="tooltiptext">Time between actions and decisions. Set this higher on laggy servers.</span></div></td>
+              <td><input type="number" id="FeedBabiesDelay" ></td>
+            </tr>
 
 
-      <tr>
-        <td>Food Type: <img id="FBfoodimg" class="Arrow"></td>
-        <td>
-          <select id="FBfoodType">
-            <option value='1'>Mejo</option>
-            <option value='2'>Raw Meat</option>
-            <option value='3'>Raw Fish</option>
-            <option value='4'>Spoiled</option>
-          </select>
-        </td>
-      </tr>
+            <tr>
+              <td>Food Type: <img id="FBfoodimg" class="Arrow"></td>
+              <td>
+                <select id="FBfoodType">
+                  <option value='1'>Mejo</option>
+                  <option value='2'>Raw Meat</option>
+                  <option value='3'>Raw Fish</option>
+                  <option value='4'>Spoiled</option>
+                </select>
+              </td>
+            </tr>
 
-      <tr>
-        <td>Color Tolerance (0-255): <div class="tooltip">?<span class="tooltiptext">Affects Food detection. Be sure this is tuned properly before trusting. This is only used for an Alert and no action is taken if empty.</span></div></td>
-        <td><input type="number" id="ColorTol2" ></td>
-      </tr>
+            <tr>
+              <td>Color Tolerance (0-255): <div class="tooltip">?<span class="tooltiptext">Affects Food detection. Be sure this is tuned properly before trusting. This is only used for an Alert and no action is taken if empty.</span></div></td>
+              <td><input type="number" id="ColorTol2" ></td>
+            </tr>
 
-      <tr>
-        <td>Check for Empty:</td>
-        <td>
-          <div class="button r check8" style="float: right;">
-            <input type="checkbox" class="checkbox" onchange="check(this)" id="FBemptyCheck" />
-            <div class="knobs"></div>
-            <div class="layer"></div>
+            <tr>
+              <td>Check for Empty:</td>
+              <td>
+                <div class="button r check8" style="float: right;">
+                  <input type="checkbox" class="checkbox" onchange="check(this)" id="FBemptyCheck" />
+                  <div class="knobs"></div>
+                  <div class="layer"></div>
+                </div>
+              </td>
+            </tr>
+
+
+              <tr class="subrow2">
+                <td colspan="2" id="FBtabcontent1bottom"></td></tr>
+              <tr>
+
+          </table>
           </div>
         </td>
       </tr>
