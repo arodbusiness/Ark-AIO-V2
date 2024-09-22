@@ -169,6 +169,65 @@ img.ArrowUD{
   width: auto;
 }
 
+button.ExportBtn {
+  color: white;
+  height: 32px;
+  font-weight: bold;
+  font-size: 18px;
+  border-radius: 20px;
+  padding: 5px 10px;
+  border: 0px;
+  transition: background-color 0.2s;
+  display: flex;
+  justify-content: center;
+}
+
+button.ExportBtn img{
+  height: 24px;
+  width: 24px;
+  position: relative;
+  left: -4px;
+}
+
+button.ExportBtn span{
+  position: relative;
+  top: -7px;
+}
+
+button#ASBselect {   
+  background: linear-gradient(#7F004C,#4D002E 99%);
+  /*background: linear-gradient(#FF0099,#9B005C 99%);*/
+}
+
+button#ExportFolder {
+  background: linear-gradient(#004C7F,#002E4D 99%);
+  /*background: linear-gradient(#0099FF,#005C9B 99%);*/
+}
+
+button#LastExport {
+  background: linear-gradient(#247F24,#152E15 99%);
+  /*background: linear-gradient(#48FF48,#2B5C2B 99%);*/
+}
+
+button#TotalExports {
+  background: linear-gradient(#7F4C00,#4D2E00 99%);
+  /*background: linear-gradient(#FF9900,#9B5C00 99%);*/
+}
+
+
+img.smallicon {
+  width:16px;
+  height:auto;
+}
+
+
+img#ASBcheck, img#ExportFoldercheck {
+  position: relative;
+  top:-4px;
+  left: 2px;
+}
+
+
 tr.content {
   display: none;
   overflow: hidden;
@@ -272,7 +331,7 @@ input[type=text], input[type=number], input[type=range], .SelectDropdown {
 }
 
 
-input[type=button]  {
+input[type=button]{
   font-weight: bold;
   font-size: 18px;
   border-radius: 20px;
@@ -388,7 +447,7 @@ button.indBtn{
   border: none;
 }
 
-input.ExportBtn{
+input.ExportBtn, button.ExportBtn{
   display: inline-block;
   white-space: normal;
   word-wrap: break-word;
@@ -850,7 +909,7 @@ ul#ScreenshotsList li img {
           <div class="box check6">
             <input type="checkbox" class="checkbox2" id="AlertsInput6">
             <span class="check"></span>
-            <label for="AlertsInput6">Death Message</label>
+            <label for="AlertsInput6">Spawn Menu</label>
           </div>
         </td>
       </tr>
@@ -950,6 +1009,30 @@ ul#ScreenshotsList li img {
           <input type="text" value="testing 123" id="AlertTestString" >
         </td>
       </tr>
+
+      
+      <tr>
+        <td colspan="2" class="dividermini"></td>
+      </tr>
+
+      <tr class="subrow">
+        <td colspan="2">
+          <div class="box check14" style="justify-content: center;">
+            <input type="checkbox" class="checkbox2" id="DiscordMe">
+            <span class="check"></span>
+            <label for="DiscordMe"><div class="tooltip">@ Me on Discord for Important Alerts<span class="tooltiptext">Discord: User Settings > Advanced > Developer Mode > Enable!</span></div></label>
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <td>Discord User ID: <div class="tooltip">(?)<span class="tooltiptext">"Copy User ID" from Discord</span></div> <img id="discordapprove" class="smallicon"></td>
+        <td>
+          <input type="text" value="187381680770646017" id="DiscordID" >
+        </td>
+      </tr>
+
+
       <tr class="submitCellDouble">
         <td>
           <input type="button" value="Test Output" onclick="window.location.href = 'myapp://' + this.id;" id="TestSound" >
@@ -958,7 +1041,9 @@ ul#ScreenshotsList li img {
           <input type="button" value="Update Alerts" onclick="window.location.href = 'myapp://' + this.id;" id="UpdateAlerts">
         </td>
       </tr>
-      
+
+
+
     </table>
 
 
@@ -1037,10 +1122,11 @@ ul#ScreenshotsList li img {
       <tr class="alertnotify" id="alertnotify3">
         <td>Reset Timer Key:</td><td><input type="text" id="CDResetKey" ></td>
       </tr>
+<!--
       <tr class="alertnotify" id="alertnotify4">
         <td>Key Presses Reset:</td><td><input type="number" id="CDResetNumber" ></td>
       </tr>
-
+-->
 <!-- --------------------------------------------------------------------------------------------------------- -->
 
 
@@ -1810,13 +1896,17 @@ ul#ScreenshotsList li img {
   <td colspan="10"> 
     <table class="tablecontent">
       <tr>
-        <td align="left">
-          <div class="div-row">
-            <button type="button" onclick="buttonpress(this)" class="dropdownbutton2" id="AutoDinoExport"> <img id="AutoDinoExportArrow" class="Arrow" src="Captures\Arrow0.png"> Dino Export Infos</button> 
-          </div> 
-        </td>
-        <td>
-          <input type="button" onclick="window.location.href = 'myapp://' + this.id;" id="LastExport" value="Last Export" class="ExportBtn">
+        <td colspan="2">
+
+
+          <button onclick="window.location.href = 'myapp://' + this.id;" id="ASBselect" class="ExportBtn"><img id="ASBicon" class="smallicon"><img id="ASBcheck"></button>
+          <button onclick="window.location.href = 'myapp://' + this.id;" id="ExportFolder" class="ExportBtn"><img id="ExportFoldericon" class="smallicon"><img id="ExportFoldercheck"></button>
+
+          <button onclick="window.location.href = 'myapp://' + this.id;" id="LastExport" class="ExportBtn"><img id="LastExporticon" class="smallicon"><span>Last</span></button>
+          <button onclick="window.location.href = 'myapp://' + this.id;" id="TotalExports" class="ExportBtn"><img id="TotalExportsicon" class="smallicon"><span id="TotalExportsValue"></span></button>
+
+
+
         </td>
       </tr>      
     </table>
@@ -1835,7 +1925,7 @@ ul#ScreenshotsList li img {
                 <span id="Exportset"></span>
               </td>
               <td>
-                <input type="button" onclick="window.location.href = 'myapp://' + this.id;" id="TotalExports" value="Clean Exports" class="ExportBtn">
+                
               </td>
             </tr>
 
@@ -1870,20 +1960,7 @@ ul#ScreenshotsList li img {
 
 
 
-          <table class="collapsiblecontent" id="DinoExportSettingsContent">
-            <tr class="submitCellSingle">
-              <td colspan="2">
-                <input type="button" onclick="window.location.href = 'myapp://' + this.id;" id="SelectExports" value="Select Exports Folder">
-              </td>
-            </tr>            
-            <tr class="submitCellDouble">
-              <td>
-                <input type="button" onclick="window.location.href = 'myapp://' + this.id;" id="SelectASB" value="Select ASB values">
-              </td>
-              <td>
-                <input type="button" onclick="window.location.href = 'myapp://' + this.id;" id="OpenASB" value="Open ASB values">
-              </td>
-            </tr>
+          <table class="collapsiblecontent" id="DinoExportSettingsContent">          
             <tr class="subrow">
               <td colspan="2">
                 <div class="box check7" >
@@ -1940,12 +2017,25 @@ ul#ScreenshotsList li img {
               <td colspan="2" style="text-align:center;">
                 <table class="collapsiblecontent" id="ExportRaisingContent">
                   <tr>
-                    <td colspan="2" class="divider"></td>
+                    <td colspan="2" class="dividermini"></td>
                   </tr>
 
                   <tr>
                     <td colspan="2">
                       <table>
+                        <tr class="subrow">
+                          <td style="width:75%;">
+                            <div class="box check10">
+                              <input type="checkbox" class="checkbox2" id="FoodOverride" onchange="check(this)">
+                              <span class="check"></span>
+                              <label for="FoodOverride">Override Food Type: <img id="FoodTypeDisp" style="vertical-align:middle; display: inline-block;width:24px;height:24px;"></label>
+                            </div>
+                          </td>
+                          <td>
+                            <input type="text" id="FoodOverrideType">
+                          </td>
+                        </tr>
+
                         <tr class="subrow">
                           <td style="width:75%;">
                             <div class="box check2">
@@ -1963,7 +2053,7 @@ ul#ScreenshotsList li img {
                             <div class="box check6">
                               <input type="checkbox" class="checkbox2" id="DebugBaby" onchange="check(this)">
                               <span class="check"></span>
-                              <label for="DebugBaby">Debug Baby Age (0-100):</label>
+                              <label for="DebugBaby">Override Baby Age (0-100):</label>
                             </div>
                           </td>
                           <td>
@@ -1977,7 +2067,7 @@ ul#ScreenshotsList li img {
 
                 <table class="collapsiblecontent" id="ExportStatsContent">
                   <tr>
-                    <td colspan="2" class="divider"></td>
+                    <td colspan="2" class="dividermini"></td>
                   </tr>
 
 
@@ -2048,7 +2138,7 @@ ul#ScreenshotsList li img {
                   </tr>
 
                   <tr>
-                    <td colspan="2" class="divider"></td>
+                    <td colspan="2" class="dividermini"></td>
                   </tr>
 
                   <tr>
@@ -2125,14 +2215,14 @@ ul#ScreenshotsList li img {
 
 
             <tr>
-              <td colspan="2" class="divider"></td>
+              <td colspan="2" class="dividermini"></td>
             </tr>
             <tr class="submitCellDouble">
               <td>
                 <input type="button" value="Setup Overlay" onclick="window.location.href = 'myapp://' + this.id;" id="SetupExport" >
               </td>
               <td>
-                <input type="button" value="Update Settings" onclick="window.location.href = 'myapp://' + this.id;" id="UpdateASBsnip" >
+                <input type="button" value="Update Settings" onclick="window.location.href = 'myapp://' + this.id;" id="UpdateDinoExport" >
               </td>
             </tr>
           </table>
@@ -2185,8 +2275,27 @@ ul#ScreenshotsList li img {
           <div class="tooltip">What is this?<span class="tooltiptext">Export your baby dino and then open the inventory. This will watch the food over time and tell when the baby will be out of food. Must not eat while watching. Very usual for Wyverns. </span></div>
         </td>
       </tr>
-
-
+      <tr>
+        <td colspan="2">
+          <table>
+            <tr class="subrow">
+              <td style="width:75%;" colspan="2">
+                <div class="box check9">
+                  <input type="checkbox" class="checkbox2" id="WBoxyCheck" >
+                  <span class="check"></span>
+                  <label for="WBoxyCheck">Dino has Oxygen Stat</label>
+                </div>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td>Y Offset (no oxy):</td>
+        <td>
+          <input type="number" id="WBoxyOffset">
+        </td>
+      </tr>
       <tr>
         <td style="width:50%;" >Last Capture</td>
         <td>
@@ -3022,6 +3131,11 @@ ul#ScreenshotsList li img {
       </tr>
 
       <tr>
+        <td nowrap>JoinSim Color2 : <span id="JoinSimColor2disp" style="border: 2px solid black;"><img style="width:20px;height:20px;background:transparent;"></span>
+        <td><input type="text" id="JoinSimColor2" ></td>
+      </tr>
+
+      <tr>
       <td colspan="2">
           <div class="box check1">
             <input type="checkbox" class="checkbox2" id="JoinSimLaunch">
@@ -3103,7 +3217,7 @@ ul#ScreenshotsList li img {
 
 <tr class="dropdownline" id="OfficialRatesDropDown" >
   <td>
-      <button type="button" onclick="buttonpress(this)" class="dropdownbutton" id="OfficialRates"> <img id="OfficialRatesArrow" class="Arrow" src="Captures\Arrow0.png"> Official Rates</button>
+      <button type="button" onclick="buttonpress(this)" class="dropdownbutton" id="OfficialRates"> <img id="OfficialRatesArrow" class="Arrow" src="Captures\Arrow0.png"> Official Rates <span id="ORdisp"></span></button>
   </td>
   <td style="width:100%">
     <div class="button r check2" style="float: right;">
@@ -3472,13 +3586,6 @@ ul#ScreenshotsList li img {
   <td colspan="10"> 
     <table class="tablecontent">
       <tr>
-        <td colspan="2">
-          <div id="ScreenshotsScroller">
-
-          </div>
-        </td>
-      </tr>
-      <tr>
         <td>Time Delay between Captures:</td>
         <td><input type="text" id="ScreenshotsDelay" ></td>
       </tr>
@@ -3736,29 +3843,6 @@ ul#ScreenshotsList li img {
     </table>
   </td>
 </tr>
-
-
-
-<tr class="dropdownline" id="DebugDropDown" >
-  <td>
-    <input type="checkbox" onchange="check(this)" id="DebugCheck" >
-    <button type="button" onclick="buttonpress(this)" class="dropdownbutton" id="Debug"> <img id="DebugArrow" class="Arrow" src="Captures\Arrow0.png"> Debug</button>
-  </td>
-</tr>
-
-<tr id="DebugContent" class="content">
-  <td colspan="10"> 
-    <table class="tablecontent">
-      
-      <tr><td><p id="BrowserInfo"></p></td></tr>
-
-    </table>
-  </td>
-</tr>
-
-
-
-
 
 
 </table>
